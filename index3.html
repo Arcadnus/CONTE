@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="css/materialize.min.css">
+  <link rel="stylesheet" href="https://use.typekit.net/gjk2cys.css">
   <link rel="stylesheet" href="css/editor.css">
+
   <title>Editor</title>
 
   <!-- fabric.js -->
@@ -16,167 +18,350 @@
   
 </head>
 <body class="lighten-3">
-
-  <button class="clearAll backBtn" onclick="history.back();">
-    <img src="img/icones/icones-15.png" onclick="history.back();">
+  <div class="alerta" id="alerta"><p id="msg" class="dinosaur orange">CENA SALVA~</p></div>
+  <button class="clearAll backBtn" onclick="window.location.href = 'storyList.html';">
+    <img src="img/
+icones/svg/new/icones_com_o_circulo_voltar.svg">
   </button>
 
   <div class="topEditor">
-    <div class="topBtn myBtn">
-      <!-- icone --> 
-      <img src="img/icones/icones-12.png">
+    <div id="deletarItemBtn" class="topBtn myBtn">
+      <img src="img/icones/svg/new/icones_com_o_circulo_lixeira.svg">
+    </div>
+    <div id="novaCenaBtn" class="topBtn myBtn">
+      <img src="img/icones/svg/new/icones_com_o_circulo_nova_cena.svg">
     </div>
     <div class="topBtn myBtn">
-      <!-- icone -->
-      <img src="img/icones/icones-14.png">
+      <img src="img/icones/svg/new/icones_com_o_circulo_editar_cenas.svg">
     </div>
+  </div>
+
+  <div class="bottomEditor">
+    <div id="prevScene" class='triangle-left blue'></div>
+    <div class="circle blue whiteTxt DINosaur-bold"><p id="pagNumeracao"></p></div>
+    <div id="nextScene" class='triangle-right blue'></div>
   </div>
 
   <!-- botôes do editor -->
 	<li id="nav-mobile carousel" class="firstLi right">
-		<ul class="firstUl carousel-item gray myBtn" id="1" onclick="opentab(this.id)">
-        <img id="imgBtn1"src="img/icones/icones-10.png">
-        <!-- <img id="imgBtn1" src="img/logo.png"> -->
+		<ul class="firstUl carousel-item" id="1" onclick="opentab(this.id)">
+        <img id="imgBtn1"src="img/icones/svg/new/icones_com_o_circulo_stickers.svg">
 		</ul>
-    <ul class="firstUl carousel-item gray myBtn" id="2" onclick="opentab(this.id)">
-        <img id="imgBtn2" src="img/icones/icones-11.png">
+    <ul class="firstUl carousel-item" id="2" onclick="opentab(this.id)">
+        <img id="imgBtn2" src="img/icones/svg/new/icones_com_o_circulo_simbolos.svg">
     </ul>
-    <ul class="firstUl carousel-item gray myBtn" id="3" onclick="opentab(this.id)">
-        <img id="imgBtn3" src="img/icones/icones-17.png">
+    <ul class="firstUl carousel-item" id="3" onclick="opentab(this.id)">
+        <img id="imgBtn3" src="img/icones/svg/new/icones_com_o_circulo_camera.svg">
     </ul>
 	</li>
 
   <!-- MENU 1 - STICKERS -->
   <li class="secondLi" id="tab1" onclick="closeTabs(this.id);">
-    <!-- sticker 1 -->
-    <ul class="secondUl" id="1" onclick="putImage(this.id)">
+    <ul class="secondUl" id="1" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_1.png">
     </ul>
-    <!-- sticker 2 -->
-    <ul class="secondUl" id="2" onclick="putImage(this.id)">
+    <ul class="secondUl" id="2" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_2.png">
     </ul>
-    <!-- sticker 3 -->
-    <ul class="secondUl" id="3" onclick="putImage(this.id)">
+    <ul class="secondUl" id="3" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_3.png">
     </ul>
-    <!-- sticker 4 -->
-    <ul class="secondUl" id="4" onclick="putImage(this.id)">
+    <ul class="secondUl" id="4" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_4.png">
     </ul>
-    <!-- sticker 5 -->
-    <ul class="secondUl" id="5" onclick="putImage(this.id)">
+    <ul class="secondUl" id="5" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_5.png">
     </ul>
-    <!-- sticker 6 -->
-    <ul class="secondUl" id="6" onclick="putImage(this.id)">
+    <ul class="secondUl" id="6" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_6.png">
     </ul>
-    <!-- sticker 7 -->
-    <ul class="secondUl" id="7" onclick="putImage(this.id)">
+    <ul class="secondUl" id="7" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_7.png">
     </ul>
-    <!-- sticker 8 -->
-    <ul class="secondUl" id="8" onclick="putImage(this.id)">
+    <ul class="secondUl" id="8" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_8.png">
     </ul>
-    <!-- sticker 9 -->
-    <ul class="secondUl" id="9" onclick="putImage(this.id)">
+    <ul class="secondUl" id="9" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_9.png">
     </ul>
-    <!-- sticker 10 -->
-    <ul class="secondUl" id="10" onclick="putImage(this.id)">
+    <ul class="secondUl" id="10" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_10.png">
     </ul>
-    <!-- sticker 11 -->
-    <ul class="secondUl" id="11" onclick="putImage(this.id)">
+    <ul class="secondUl" id="11" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_11.png">
     </ul>
-    <!-- sticker 12 -->
-    <ul class="secondUl" id="11" onclick="putImage(this.id)">
+    <ul class="secondUl" id="12" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_12.png">
     </ul>
-    <!-- sticker 13 -->
-    <ul class="secondUl" id="11" onclick="putImage(this.id)">
+    <ul class="secondUl" id="13" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_13.png">
     </ul>
-    <!-- sticker 14 -->
-    <ul class="secondUl" id="11" onclick="putImage(this.id)">
+    <ul class="secondUl" id="14" onclick="putSticker(this.id)">
       <img src="img/stickers/sticker_14.png">
     </ul>
+    <ul class="secondUl" id="15" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_15.png">
+    </ul>
+    <ul class="secondUl" id="16" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_16.png">''
+    </ul>
+    <ul class="secondUl" id="17" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_17.png">
+    </ul>
+    <ul class="secondUl" id="18" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_18.png">
+    </ul>
+    <ul class="secondUl" id="19" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_19.png">
+    </ul>
+    <ul class="secondUl" id="20" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_20.png">
+    </ul>
+    <!-- <ul class="secondUl" id="21" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_21.png">
+    </ul> -->
+    <ul class="secondUl" id="22" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_22.png">
+    </ul>
+    <ul class="secondUl" id="23" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_23.png">
+    </ul>
+    <ul class="secondUl" id="24" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_24.png">
+    </ul>
+    <ul class="secondUl" id="25" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_25.png">
+    </ul>
+    <ul class="secondUl" id="26" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_26.png">
+    </ul>
+    <ul class="secondUl" id="27" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_27.png">
+    </ul>
+    <ul class="secondUl" id="28" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_28.png">
+    </ul>
+    <ul class="secondUl" id="29" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_29.png">
+    </ul>
+    <!-- <ul class="secondUl" id="30" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_30.png">
+    </ul>
+    <ul class="secondUl" id="31" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_31.png">
+    </ul>
+    <ul class="secondUl" id="32" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_32.png">
+    </ul>
+    <ul class="secondUl" id="33" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_33.png">
+    </ul>
+    <ul class="secondUl" id="34" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_34.png">
+    </ul>
+    <ul class="secondUl" id="35" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_35.png">
+    </ul>
+    <ul class="secondUl" id="36" onclick="putSticker(this.id)">
+      <img src="img/stickers/sticker_36.png">
+    </ul> -->
     <!-- and so on... -->
   </li>
 
   <!-- MENU 2 - ACESSORIOS -->
   <li class="secondLi" id="tab2" onclick="closeTabs(this.id);">
-    <ul class="secondUl red" id="bgRed">
+    <!-- acessory 1 -->
+    <ul class="secondUl" id="1" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_1.png">
     </ul>
-    <ul class="secondUl blue" id="bgBlue">
+    <!-- acessory 2 -->
+    <ul class="secondUl" id="2" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_2.png">
     </ul>
-    <ul class="secondUl green" id="bgGreen">
+    <!-- acessory 3 -->
+    <ul class="secondUl" id="3" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_3.png">
     </ul>
-    <ul class="secondUl yellow" id="bgYellow">
+    <!-- acessory 4 -->
+    <ul class="secondUl" id="4" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_4.png">
     </ul>
-    <ul class="secondUl colors">
+    <!-- acessory 5 -->
+    <ul class="secondUl" id="5" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_5.png">
+    </ul>
+    <!-- acessory 6 -->
+    <ul class="secondUl" id="6" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_6.png">
+    </ul>
+    <!-- acessory 7 -->
+    <ul class="secondUl" id="7" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_7.png">
+    </ul>
+    <!-- acessory 8 -->
+    <ul class="secondUl" id="8" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_8.png">
+    </ul>
+    <!-- acessory 9 -->
+    <ul class="secondUl" id="9" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_9.png">
+    </ul>
+    <!-- acessory 10 -->
+    <ul class="secondUl" id="10" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_10.png">
+    </ul>
+    <!-- acessory 11 -->
+    <ul class="secondUl" id="11" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_11.png">
+    </ul>
+    <!-- acessory 12 -->
+    <ul class="secondUl" id="12" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_12.png">
+    </ul>
+    <!-- acessory 13 -->
+    <ul class="secondUl" id="13" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_13.png">
+    </ul>
+    <!-- acessory 14 -->
+    <ul class="secondUl" id="14" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_14.png">
+    </ul>
+    <!-- acessory 15 -->
+    <ul class="secondUl" id="15" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_15.png">
+    </ul>
+    <!-- acessory 16 -->
+    <ul class="secondUl" id="16" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_16.png">
+    </ul>
+    <!-- acessory 17 -->
+    <ul class="secondUl" id="17" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_17.png">
+    </ul>
+    <!-- acessory 18 -->
+    <ul class="secondUl" id="18" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_18.png">
+    </ul>
+    <!-- acessory 19 -->
+    <ul class="secondUl" id="19" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_19.png">
+    </ul>
+    <!-- acessory 20 -->
+    <ul class="secondUl" id="20" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_20.png">
+    </ul>
+    <!-- acessory 21 -->
+    <ul class="secondUl" id="21" onclick="putAcessory(this.id)">
+      <img src="img/stickers/acessory_21.png">
     </ul>
   </li>
   <!-- MENU 3 - FUNDOS -->
   <li class="secondLi" id="tab3" onclick="closeTabs(this.id);">
     <ul class="secondUl bgDisplayers" id="1" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/1.jpg">
+      <img id="img1" src="img/editor_bg/blackAndWhite/trim/1.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="2" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/2.jpg">
+      <img id="img2" src="img/editor_bg/blackAndWhite/trim/2.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="3" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/3.jpg">
+      <img id="img3" src="img/editor_bg/blackAndWhite/trim/3.jpg">
     </ul>
-    <!-- <ul class="secondUl bgDisplayers" id="4" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/4.jpg">
+     <ul class="secondUl bgDisplayers" id="4" onclick="change_bg(this.id);">
+      <img id="img4" src="img/editor_bg/blackAndWhite/trim/4.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="5" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/5.jpg">
+      <img id="img5" src="img/editor_bg/blackAndWhite/trim/5.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="6" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/6.jpg">
+      <img id="img6" src="img/editor_bg/blackAndWhite/trim/6.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="7" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/7.jpg">
+      <img id="img7" src="img/editor_bg/blackAndWhite/trim/7.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="8" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/8.jpg">
+      <img id="img8" src="img/editor_bg/blackAndWhite/trim/8.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="9" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/9.jpg">
+      <img id="img9" src="img/editor_bg/blackAndWhite/trim/9.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="10" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/10.jpg">
+      <img id="img10" src="img/editor_bg/blackAndWhite/trim/10.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="11" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/11.jpg">
+      <img id="img11" src="img/editor_bg/blackAndWhite/trim/11.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="12" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/12.jpg">
+      <img id="img12" src="img/editor_bg/blackAndWhite/trim/12.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="13" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/13.jpg">
+      <img id="img13" src="img/editor_bg/blackAndWhite/trim/13.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="14" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/14.jpg">
+      <img id="img14" src="img/editor_bg/blackAndWhite/trim/14.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="15" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/15.jpg">
+      <img id="img15" src="img/editor_bg/blackAndWhite/trim/15.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="16" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/16.jpg">
+      <img id="img16" src="img/editor_bg/blackAndWhite/trim/16.jpg">
     </ul>
     <ul class="secondUl bgDisplayers" id="17" onclick="change_bg(this.id);">
-      <img src="img/editor_bg/blackAndWhite/17.jpg">
-    </ul> -->
+      <img id="img17" src="img/editor_bg/blackAndWhite/trim/17.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="18" onclick="change_bg(this.id);">
+      <img id="img18" src="img/editor_bg/blackAndWhite/trim/18.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="19" onclick="change_bg(this.id);">
+      <img id="img19" src="img/editor_bg/blackAndWhite/trim/19.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="20" onclick="change_bg(this.id);">
+      <img id="img20" src="img/editor_bg/blackAndWhite/trim/20.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="21" onclick="change_bg(this.id);">
+      <img id="img21" src="img/editor_bg/blackAndWhite/trim/21.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="22" onclick="change_bg(this.id);">
+      <img id="img22" src="img/editor_bg/blackAndWhite/trim/22.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="23" onclick="change_bg(this.id);">
+      <img id="img23" src="img/editor_bg/blackAndWhite/trim/23.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="24" onclick="change_bg(this.id);">
+      <img id="img24" src="img/editor_bg/blackAndWhite/trim/24.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="25" onclick="change_bg(this.id);">
+      <img id="img25" src="img/editor_bg/blackAndWhite/trim/25.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="26" onclick="change_bg(this.id);">
+      <img id="img26" src="img/editor_bg/blackAndWhite/trim/26.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="27" onclick="change_bg(this.id);">
+      <img id="img27" src="img/editor_bg/blackAndWhite/trim/27.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="28" onclick="change_bg(this.id);">
+      <img id="img28" src="img/editor_bg/blackAndWhite/trim/28.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="29" onclick="change_bg(this.id);">
+      <img id="img29" src="img/editor_bg/blackAndWhite/trim/29.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="30" onclick="change_bg(this.id);">
+      <img id="img30" src="img/editor_bg/blackAndWhite/trim/30.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="31" onclick="change_bg(this.id);">
+      <img id="img31" src="img/editor_bg/blackAndWhite/trim/31.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="32" onclick="change_bg(this.id);">
+      <img id="img32" src="img/editor_bg/blackAndWhite/trim/32.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="33" onclick="change_bg(this.id);">
+      <img id="img33" src="img/editor_bg/blackAndWhite/trim/33.jpg">
+    </ul>
   </li>
 
   <!-- testes com o Fabric.js -->
   <canvas id="canvaassss"></canvas>
+
+  <div class="hidden" id="ImageHolder"></div>
 
   <!-- ENVIO DO CANVAS AO BANCO DE DADOS FIREBASE -->
   <!-- <progress value="0" max="100" id="uploader"></progress>
@@ -184,23 +369,14 @@
   <button id="saveImage">Salvar minha imagem no banco de dados!</button> -->
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#config-web-app -->
 
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyAhjQ3jcnWyE6Hcq__AbkJvdjKKaJzmWhE",
-      authDomain: "teste-2-de-projetos.firebaseapp.com",
-      databaseURL: "https://teste-2-de-projetos.firebaseio.com",
-      projectId: "teste-2-de-projetos",
-      storageBucket: "teste-2-de-projetos.appspot.com"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
   <!-- Minified script for opening and closing of html components -->
   <script src="js/materialize.min.js"></script>
  
@@ -209,57 +385,92 @@
   <script src="js/auth.js"></script>
   <script src="js/index.js"></script>
 
-  <!-- TRAVAR A TELA NA HORIZONTAL -->
-  <script src="js/telaHorizontal.js"></script>
+  <!-- TRAVAR A TELA NA HORIZONTAL
+  <script src="js/telaHorizontal.js"></script> -->
 
+  <!-- para pegar o q foi enviado pelo metodo GET -->
+  <script src="js/getParameterByName.js"></script>
   <script>
+  </script>
+  <script>
+    const alerta = document.getElementById('alerta');
+    const msg = document.getElementById('msg');
+    var bgAtual;
 
+    //MOSTRAR MENSAGENS E ALERTAS
+   
+      function alertaMSG(mensagem){
+        $("#msg").innerHTML = "CENA SALVA!";
+        $("#alerta").show().delay(1500).hide(500);
+      };
 
     //REDIMENSIONAR O CANVAS PARA ENCAIXAR NA TELA
-      (function() {
-        var
-        // Obtain a reference to the canvas element using its id.
-        canvas = document.getElementById('canvaassss'),
-        // Obtain a graphics context on the canvas element for drawing.
-        context = canvas.getContext('2d');
 
-        // Start listening to resize events and draw canvas.
-        initialize();
+      // each time the window is resized.
+      window.addEventListener('resize', resizeCanvas);
+    
+      window.addEventListener("orientationchange", resizeCanvas);
+      
+      var
+      // Obtain a reference to the canvas element using its id.
+      canvas = document.getElementById('canvaassss');
+      // Obtain a graphics context on the canvas element for drawing.
+
+      // Start listening to resize events and draw canvas.
+      initialize();
+
+    //CRIAR CANVAS 
+      //odeio canvas
+      var canvas = new fabric.Canvas('canvaassss');
 
         function initialize() {
-           // Register an event listener to call the resizeCanvas() function 
-           // each time the window is resized.
-           window.addEventListener('resize', resizeCanvas, false);
-           // Draw canvas border for the first time.
-           resizeCanvas();
+          // Register an event listener to call the resizeCanvas() function 
+          // Draw canvas border for the first time.
+          resizeCanvas();
         }
 
         // Display custom canvas. In this case it's a blue, 5 pixel 
         // border that resizes along with the browser window.
         function redraw() {
-           context.strokeStyle = 'blue';
-           context.lineWidth = '5';
-           context.strokeRect(0, 0, window.innerWidth, window.innerHeight);
-        }
+          context.strokeStyle = 'blue';
+          context.lineWidth = '5';
+          context.strokeRect(0, 0, window.innerWidth, window.innerHeight);
+          console.log('2 redesenhando canvas:');
+          console.log('largura: '+canvas.width+' altura: '+canvas.height);
+        };
 
         // Runs each time the DOM window resize event fires.
         // Resets the canvas dimensions to match window,
         // then draws the new borders accordingly.
         function resizeCanvas() {
+
+            context = canvas.getContext('2d');
+            // screenOrientationCheck();
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            console.log('3 redefinindo tamanho do canvas:');
+            console.log('largura: '+canvas.width+' altura: '+canvas.height);
             redraw();
-        }
-        })();
-
-    //CRIAR CANVAS
-      var canvas = new fabric.Canvas('canvaassss');
-
+        };
+    //DETECTAR A ORIENTAÇÃO DO APARELHO
+      /*function screenOrientationCheck(){
+        //coisas sobre girar a tela
+        if(window.innerWidth > window.innerHeight){
+          console.log('width is larger!');
+          console.log(window.innerHeight);
+          console.log(window.innerWidth);
+        }else if (window.innerWidth < window.innerHeight){
+          console.log('height is larger!');
+          console.log(window.innerHeight);
+          console.log(window.innerWidth);
+        }else{
+          console.log('something went wrong!');
+        };
+      };*/
     //BORDAS E CONTROLES DO OBJETO CUSTOMIZADAS
       //procurar por 
       //cornerSize: 39
       //no arquivo js/fabric.min.js
-
 
       /*
     // !!!!!!!!!!!!!ANTIGA!!!!!!!!!!!!!
@@ -310,22 +521,50 @@
 
     //NOVO INSERSÃO DE IMAGENS
       var imgCount = 0 ;
-      function putImage(ids) {
-        imgCount++;
-        stickerID = "canvasSticker"+imgCount;
-        fabric.Image.fromURL('img/stickers/sticker_'+ids+'.png',function (imgfishID) {
-          imgfishID.set({
-            // borderColor: 'red',
-            // cornerColor: 'green',
-            cornerSize: 15,
-            transparentCorners: false
+      //FUNÇÃO PARA STICKERS NORMAIS
+        function putSticker(ids) {
+          imgCount++;
+          stickerID = "canvasSticker"+imgCount;
+          fabric.Image.fromURL('img/stickers/sticker_'+ids+'.png',function (imgfishID) {
+            imgfishID.set({
+              // borderColor: 'red',
+              // cornerColor: 'green',
+              scaleX: 0.2,
+              scaleY: 0.2,
+              cornerSize: 15,
+              transparentCorners: false
+            });
+            canvas.add(imgfishID);
           });
-          canvas.add(imgfishID);
-        });
-        console.log("added "+imgCount+" images to the canvas!");
-        console.log("The image is: sticker_"+ids+".png");
-      }
 
+          console.log("added "+imgCount+" images to the canvas!");
+          //added 1 images do the canvas!
+          console.log("The image is: sticker_"+ids+".svg");
+          //the image is: sticker_1.svg
+        };
+      //FUNÇÃO PARA STICKERS DE ACESSÓRIOS
+      
+        function putAcessory(ids) {
+          imgCount++;
+          stickerID = "canvasSticker"+imgCount;
+          fabric.Image.fromURL('img/stickers/acessory_'+ids+'.png',function (imgfishID) {
+            imgfishID.set({
+              // borderColor: 'red',
+              // cornerColor: 'green',
+              scaleX: 0.2,
+              scaleY: 0.2,
+              cornerSize: 15,
+              transparentCorners: false
+            });
+            canvas.add(imgfishID);
+          });
+
+          console.log("added "+imgCount+" images to the canvas!");
+          //added 1 images do the canvas!
+          console.log("The image is: sticker_"+ids+".svg");
+          //the image is: sticker_1.svg
+        }
+    /*
     //SALVAR CANVAS INTEIRO COMO IMAGEM PNG
       var saveCount = 0;
       var uploader = document.getElementById('uploader');
@@ -357,7 +596,7 @@
           );
 
         });
-      });
+      });*/
 
     //MUDAR COR DE FUNDO
       /*
@@ -387,65 +626,64 @@
       */
 
     //MUDAR IMAGEM DE FUNDO
-      
-
-    /*canvas.setBackgroundImage('img/editor_bg/normal/1.jpg', canvas.renderAll.bind(canvas), {
-        //original:
-        // scaleX: canvas.width / img.width,
-        // scaleY: canvas.height / img.height
-        scaleX: canvas.width / 4000,
-        scaleY: canvas.width / 4000
-      });*/
-
-
-      function change_bg(imageNumber) {
-
-
-        /*
-        //CORTAR EM BAIXO
-        if (imageNumber==1) {         
-          canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+      //ANTIGO 
+        /*canvas.setBackgroundImage('img/editor_bg/normal/1.jpg', canvas.renderAll.bind(canvas), {
+          //original:
+          // scaleX: canvas.width / img.width,
+          // scaleY: canvas.height / img.height
           scaleX: canvas.width / 4000,
-          scaleY: canvas.width / 4000,
-          left: canvas.width/2,
-          top: 0,
-          originX: "center",
-          originY: "top"
-          });
-        //CORTAR NO MEIO
-        }else if(imageNumber==2){
-          canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
-          scaleX: canvas.width / 4000,
-          scaleY: canvas.width / 4000,
-          left: canvas.width/2,
-          top: canvas.height/2,
-          originX: "center",
-          originY: "center"
-          });
-        /CORTAR EM CIMA
-        }else if(imageNumber==3){
-          canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
-          scaleX: canvas.width / 4000,
-          scaleY: canvas.width / 4000,
-          left: canvas.width/2,
-          top: canvas.height,
-          originX: "center",
-          originY: "bottom"
-          });
- 
-        }
-        */
+          scaleY: canvas.width / 4000
+        });*/
 
-        canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
-          scaleX: canvas.width / 4000,
-          scaleY: canvas.width / 4000,
-          left: canvas.width/2,
-          top: canvas.height,
-          originX: "center",
-          originY: "bottom"
+      //NOVO
+        function change_bg(imageNumber) {
+          /*
+            //CORTAR EM BAIXO
+            if (imageNumber==1) {         
+              canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+              scaleX: canvas.width / 4000,
+              scaleY: canvas.width / 4000,
+              left: canvas.width/2,
+              top: 0,
+              originX: "center",
+              originY: "top"
+              });
+            //CORTAR NO MEIO
+            }else if(imageNumber==2){
+              canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+              scaleX: canvas.width / 4000,
+              scaleY: canvas.width / 4000,
+              left: canvas.width/2,
+              top: canvas.height/2,
+              originX: "center",
+              originY: "center"
+              });
+            /CORTAR EM CIMA
+            }else if(imageNumber==3){
+              canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+              scaleX: canvas.width / 4000,
+              scaleY: canvas.width / 4000,
+              left: canvas.width/2,
+              top: canvas.height,
+              originX: "center",
+              originY: "bottom"
+              });
+     
+            }
+          */
+          var imgIcon = document.getElementById('img'+imageNumber);
+
+          canvas.setBackgroundImage("img/editor_bg/blackAndWhite/trim/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+            scaleX: canvas.width / (imgIcon.naturalWidth),
+            scaleY: canvas.width / (imgIcon.naturalWidth),
+            left: canvas.width/2,
+            top: canvas.height,
+            originX: "center",
+            originY: "bottom"
           });
-  
-      };
+          bgAtual = imageNumber;
+          console.log(bgAtual);
+        };
 
     //ABRIR AS ABAS DO MENU
       function opentab(num) {
@@ -467,6 +705,168 @@
           $("#3").toggleClass("btnOpened");
         };
       };
+
+
+    //PEGAR OS ID DO CONTO E NUMERO DA CENA
+      var foo = getParameterByName('story'); // "lorem"
+      var sceneNumber = getParameterByName('cena'); // "lorem"
+      console.log(foo);
+      if (sceneNumber == null) {
+        sceneNumber = 1;
+      };
+
+      const pagNumeracao = document.getElementById('pagNumeracao');
+      const nextScene = document.getElementById('nextScene');
+      const prevScene = document.getElementById('prevScene');
+      pagNumeracao.innerHTML = sceneNumber;
+
+      if (sceneNumber > 1) {
+        //display prev e next
+        nextScene.style.display = "block";
+        prevScene.style.display = "block";
+      }else{
+        //display só next
+        nextScene.style.display = "block";
+        prevScene.style.visibility = "hidden";
+      }
+      nextScene.addEventListener('click', nextSceneFun);
+      prevScene.addEventListener('click', prevSceneFun);
+      function prevSceneFun(argument) {
+        // body...
+        sceneNumber--;
+        window.location.href = "index3.html?story="+foo+"&cena="+sceneNumber;
+      }
+      function nextSceneFun(argument) {
+        // body...
+        sceneNumber++;
+        window.location.href = "index3.html?story="+foo+"&cena="+sceneNumber;
+      }
+
+      console.log(sceneNumber);
+      const nCBtn = document.getElementById('novaCenaBtn');
+      const delBtn = document.getElementById('deletarItemBtn');
+      delBtn.addEventListener('click', delItem);
+
+      function delItem() {
+        canvas.remove(canvas.getActiveObject());
+      }
+
+  //checar se o usuario tá logado ou não
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      if (firebaseUser) {
+        // do something when he log in, like show any elements that's supposed to be seen ONLY when logged in
+        console.log(firebaseUser.uid);          
+        var ref = database.ref('user/' + firebaseUser.uid+'/contos/'+foo+'/cenas');
+        ref.once('value', pegarData, erroData);
+        // console.log(firebaseUser.displayName);
+
+        console.log("looking at:");
+        console.log('user/' + firebaseUser.uid+'/contos/'+foo+'/cenas');
+
+    //GERIR AS CENAS DA HISTÓRIA
+
+        function pegarData(data) {
+          // console.log(data.val());
+          //salva um objeto com a lista de todas as cenas
+          var cenas = data.val();
+          var cenasObjects = data.child(sceneNumber).child('objects').val();
+          var cenasBackGround = data.child(sceneNumber).child('backgroundImage').val();
+            nCBtn.addEventListener('click', sendData);
+
+          // console.log(cenas);
+          if (cenas == null) {
+            //criar nova cena
+            console.log('não há cenas criadas!');
+          }else{
+            //abrir a primeira cena
+            for (var i = 0; i < cenasObjects.length ; i++) {
+              var JObj = cenasObjects[i];
+              
+              // salvar src da imagem num objeto
+              var criarImagem = document.createElement('img'); 
+              criarImagem.id = 'JSONimage'+i;
+              criarImagem.src = JObj.src;
+              document.getElementById('ImageHolder').appendChild(criarImagem);
+              console.log('imagem criada');
+              
+              //deletar src do objeto JSON
+              delete  JObj.src;
+              // console.log(JObj);
+
+              //usar o JSON para criar o objeto dentro do canvas
+              var JSONText = JSON.stringify(JObj);
+              // console.log(JSONText);
+              var imgObject = document.getElementById('JSONimage'+i);
+              var imgInstance = new fabric.Image(imgObject ,{
+                left : JObj.left,
+                top : JObj.top,
+                scaleX : JObj.scaleX,
+                scaleY : JObj.scaleY,
+                height : JObj.height,
+                width : JObj.width,
+                flipX : JObj.flipX,
+                flipY : JObj.flipY,
+                angle : JObj.angle,
+              });
+              canvas.add(imgInstance);
+
+              //TODO: FAZER O JSON (Q TEM AS INFORMAÇÕES DOS OBJETOS SALVOS E PUXADOS DO FIREBASE) SER USADO PARA COLOCAR OS OBJETOS DE VOLTA ONDE ESTAVAM ORIGINALMENTE
+            };
+
+            var cenaBGNum = cenasBackGround.number;
+            console.log(cenaBGNum);
+            load_bg(cenaBGNum);
+          };
+        };
+        function erroData(err) {
+          console.log(err);
+        };
+
+        var refJSON = database.ref('user/' + firebaseUser.uid+'/contos/'+foo+'/cenas/'+sceneNumber);
+        //ENVIAR CENA
+        function sendData() {
+          var JSONzinho = canvas.toDatalessJSON();
+          console.log('clicked! JSON:');
+          console.log(JSONzinho);
+          refJSON.update(JSONzinho).then(function(){
+            console.log('sent JSON!');
+            //avisar q foi salvo!
+            alertaMSG();
+          });
+
+          var data2 = {
+            number : bgAtual
+                }
+          database.ref('user/' + firebaseUser.uid+'/contos/'+foo+'/cenas/'+sceneNumber+'/backgroundImage').update(data2);
+        };
+      }else{
+        console.log('not logged in');
+        // do something when he's NOT logged in, like hide user info or elements for people that are logged in
+      };
+    });
+
+
+      function load_bg(imageNumber) {
+       
+        var imgIcon = document.getElementById('img'+imageNumber);
+
+        canvas.setBackgroundImage("img/editor_bg/blackAndWhite/trim/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+          scaleX: canvas.width / (imgIcon.naturalWidth),
+          scaleY: canvas.width / (imgIcon.naturalWidth),
+          left: canvas.width/2,
+          top: canvas.height,
+          originX: "center",
+          originY: "bottom"
+        });
+        bgAtual = imageNumber;
+        console.log(bgAtual);
+      };
+      // canvas.loadFromJSON(json, function() {
+      //   canvas.renderAll(); 
+      // },function(o,object){
+      //   console.log(o,object);
+      // });
+
   </script>
 
 </body>

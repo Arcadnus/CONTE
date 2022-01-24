@@ -1,77 +1,130 @@
 /*geral*/
 
+  /*Colors*/
+    
+    .white{
+      background-color: white;
+    }
+
+    .whiteTxt{
+      color: white;
+    }
+
+    .gray{
+      background-color: lightgray;
+    }
+
+    .red{
+      background-color: #e55a46;
+    }
+
+    .redTxt,
+    .registerTag a{
+      color: #e55a46;
+    }
+
+    .orange{
+      background-color: #f3aa4d;
+    }
+
+    .orangeTxt{
+      color: #f3aa4d;
+    }
+
+    .yellow{
+      background-color: #ebcc41;
+    }
+
+    .yellowTxt{
+      color: #ebcc41;
+    }
+
+    .green{
+      background-color: #76b66a;
+    }
+
+    .greenTxt{
+      color: #76b66a;
+    }
+
+    .blue{
+      background-color: #56bbd9;
+    }
+
+    .blueTxt{
+      color: #56bbd9;
+    }
+
+
+/*FONTE DINOSAUR*/
+
+  .dinosaur{
+    font-family: dinosaur, sans-serif;
+  }
+
+  .DINosaur-book{
+    font-family: dinosaur, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  /*
+  .DINosaur-book-italic{
+    font-family: dinosaur, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .DINosaur-bold-italic{
+    font-family: dinosaur, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }*/
+
+  .DINosaur-bold{
+    font-family: dinosaur, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .DINosaur-medium{
+    font-family: dinosaur, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .DINosaur-light{
+    font-family: dinosaur, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+    
+  /**{margin: 0; padding: 0;}*/
+/*  *{
+    margin: 0;
+    padding: 0;
+  }*/
   body{
-     background-image: url("../img/bg/cropped/bg_1.jpg");
+    background-image: url(../img/bg/cropped/bg_10.svg);
     padding: 0px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 840%;
     margin: 0px;
+  }
+
+  @font-face {
+    font-family: myDinosaur;
+    src: url(../font/dinosaur.ttf);
   }
 
   .dinosaur{
     font-family: dinosaur, sans-serif;
   }
-    /*Colors*/
-      
-      .white{
-        background-color: white;
-      }
-
-      .whiteTxt{
-        color: white;
-      }
-
-      .gray{
-        background-color: lightgray;
-      }
-
-
-      .red{
-        background-color: #e55a46;
-      }
-
-      .redTxt,
-      .registerTag a{
-        color: #e55a46;
-      }
-
-      .orange{
-        background-color: #f3aa4d;
-      }
-
-      .orangeTxt{
-        color: #f3aa4d;
-      }
-
-      .yellow{
-        background-color: #ebcc41;
-      }
-
-      .yellowTxt{
-        color: #ebcc41;
-      }
-
-      .green{
-        background-color: #76b66a;
-      }
-
-      .greenTxt{
-        color: #76b66a;
-      }
-
-      .blue{
-        background-color: #56bbd9;
-      }
-
-      .blueTxt{
-        color: #56bbd9;
-      }
-  }
-
 
 
   .container{
     padding: 5%;
     max-height: 80vh;
-    overflow: scroll; 
   }
 
   .allignBottom{
@@ -92,8 +145,9 @@
   }
 
   .backBtn{
-    width: 20vw;
-    margin: 4vw;
+    width: 16vw;
+    max-width: 16vw;
+    margin: 0vw;
     position: absolute;
     z-index: 999;
     background-color: transparent;
@@ -104,16 +158,18 @@
 /*index.html + register.html*/
 
   .registerBtn{
-    border:none !important;
+    border:solid !important;
   }
 
-  form select{
+  form select,
+  .dropdownInput{
     background-color: white;
   }
 
   form input,
   form select,
-  .registerBtn{
+  .registerBtn,
+  .dropdownInput{
     width: -webkit-fill-available;
     margin-top: 2vh;
     border-radius: 50px;
@@ -127,7 +183,7 @@
 
   form select,
   .registerBtn{
-    height: 37px;
+    height: 50px;
     padding-left: 12px;
   }
 
@@ -144,6 +200,30 @@
       }
 
 /*storyList.html*/
+  .videoDisplay{
+    display: none;
+  }
+    .playButton{
+      padding-top: 2vh;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+      .playButton img{
+        width: 100%;
+        margin: 0%;
+      }
+
+    .videoBox{
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+      top: 0px;
+      position: absolute;
+      display: block;
+      z-index: 999;
+    }
 
   .perfilTab{
     position: absolute;
@@ -151,7 +231,7 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     text-align: -webkit-center;
-    top: -50vh;
+    top: -150vh;
     z-index: 2;
     transition-duration: 0.5s;
   }
@@ -218,14 +298,15 @@
   }
 
   .SLCircle{
-      position: relative;
-      width: 30%;
-      margin-top: -8%;
-      padding-top: 30%;
-      box-sizing: border-box;
-      border-radius: 999px;
-      border-style: solid;
-      border-width: 4px;
+    position: relative;
+    width: 30vw;
+    height: 30vw;
+    margin-top: -9%;
+    padding-top: 0%;
+    box-sizing: border-box;
+    border-radius: 999px;
+    border-style: solid;
+    border-width: 4px;
   }
     .SLCircleChild{
       position: absolute;
@@ -236,14 +317,14 @@
     }
 
     .SLCircleChild img{
-      width: 60%;
-      margin-left: 30%;
-      margin-top: 12%;
+      width: 50%;
+      margin-left: 27%;
+      margin-top: 18%;
     }
 
   .storyItem{
     width: 88vw;
-    height: 26vw;
+    height: 30vw;
     margin: 1vw auto 3vw auto;
     color: white;
     border-radius: 10px;
@@ -263,7 +344,7 @@
       float: left;
       width: 30%;
       height: 100%;
-      background-image: url("../img/editor_bg/blackAndWhite/1.jpg");
+      background-image: url("../img/editor_bg/blackAndWhite/trim/1.jpg");
       background-size: cover;
       background-position: center;
     }
@@ -274,7 +355,6 @@
       box-sizing: border-box;
       width: 70%;
       height: 100%;
-      background-color: red;
     }
 
     .storyTitle{
@@ -282,13 +362,13 @@
       margin: 0;
       font-family: dinosaur, sans-serif;
       font-weight: bold;
-      font-size: larger;
+      font-size: 2.6vh;
       min-inline-size: max-content;
     }
 
     .storyClass{
       font-family: dinosaur, sans-serif;
-      font-weight: thin;
+      font-size: 2vh;
       width: fit-content;
       margin: 0 0 20px 0;
     }
@@ -301,12 +381,17 @@
     }
 
     .storyShareBtn{
-      width: 60%;
+      width: 45%;
+    }
+
+    .storyDelBtn{
+      width: 20%;
     }
 
     .storyShareBtn,
-    .storyEditBtn{
-      font-size: small;
+    .storyEditBtn,
+    .storyDelBtn{
+      font-size: 1.6vh;
       padding: 5px;
       float: left;
       color: white;
@@ -316,4 +401,32 @@
     margin: 5%;
     max-height: 80vh;
     overflow: scroll; 
+  }
+
+  
+
+/*newStory.html*/
+
+  .alerta{
+    background-color: rgba(0,0,0,0.6);
+    height: 100%;
+    width: 100vw;
+    text-align-last: center;
+    position: absolute;
+    padding-top: 41vh;
+    z-index: 1;
+    top: 0;
+    display: none;
+  }
+  .alerta p{
+    border-style: solid;
+    border-width: thick;
+    border-color: white;
+    width: 70%;
+    margin: auto;
+    color: white;
+    height: 6vh;
+    border-radius: 53px;
+    padding-top: 3vh;
+    font-weight: bold;
   }

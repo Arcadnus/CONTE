@@ -16,4 +16,4 @@
   
   //Initizalize RealTime Database
   var database = firebase.database();
-
+  // console.log(firebase);

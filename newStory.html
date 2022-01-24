@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://use.typekit.net/gjk2cys.css">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/select.css">
   <title>Nova História</title>
 
 </head>
 <body class="gray">
+
+<div class="alerta" id="alerta"><p class="DINosaur-bold orange">VIRE A TELA DE LADO~</p></div>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-firestore.js"></script>
@@ -21,34 +24,11 @@
   <script src="js/jquery.min.js">
 
   </script>
-  <script>
-    
-    $( document ).ready(function() {
-      $('.dropdown').click(function () {
-          $('#classList').slideToggle();
-          console.log('clicked!');
-      });
-      $('.select').click(function () {
-          $('#classList').slideToggle();
-      });
-      $('.dropdown').focusout(function () {
-          $(this).removeClass('active');
-          $(this).find('.dropdown-menu').slideUp(300);
-      });
-      $('.dropdown .dropdown-menu li').click(function () {
-          $(this).parents('.dropdown').find('span').text($(this).text());
-          $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
-      });
-    });
-
-
-
-  </script>
   <script src="js/auth.js"></script>
   <script src="js/index.js"></script>
 
-  <button class="clearAll backBtn" onclick="history.back();">
-    <img src="img/icones/svg/icones-15.svg" onclick="history.back();">
+  <button class="clearAll backBtn" onclick="window.location.href = 'storyList.html';">
+    <img src="img/icones/svg/new/icones_com_o_circulo_voltar.svg">
   </button>
 
 <div class="container">
@@ -56,26 +36,25 @@
     <div class="logoContainer">
         <img src="img/logo.png">
     </div>
-    <div class="dropdown">
-      <div class="select">
-        <span>Select Gender</span>
-        <i class="fa fa-chevron-left"></i>
+    <form>
+      <input id="nome" class="DINosaur-light" type="text" name="nome" required placeholder="NOME DA HISTÓRIA">
+      <div class="dropdownInput dropdown DINosaur-bold">
+        <div class="select">
+          <span><b>SELECIONA A TURMA</b></span>
+          <i class="fa fa-chevron-left"></i>
+        </div>
+        <input type="hidden" name="Gender">
+        <ul id="classList" class="dropdown-menu">
+          <!-- Lista de Salas vão aparecer aqui -->
+          <!-- <li id="salaID">Nome da sala</li> -->
+        </ul>
       </div>
-      <input type="hidden" name="Gender">
-      <ul id="classList" class="dropdown-menu">
-        <li id="male">Male</li>
-        <li id="female">Female</li>
-      </ul>
-    </div>
-    <button id="registerBtn" class="registerBtn orange whiteTxt loggedOut">COMEÇAR HISTÓRIA!</button>
-    <button onclick="nextBg();">Próxima imagem de fundo!</button>
-    <button onclick="prevBg();">Anterior imagem de fundo!</button>
-    <p id="msg">Exibindo imagem numero: 1</p>
-    <p class="loggedIn">Estou Logado!</p>
-    <p class="loggedOut">Estou Deslogado!</p>
+    </form>
+    <button id="registerBtn" class="registerBtn orange whiteTxt DINosaur-bold loggedIn" style="display: block;position: absolute;bottom: 6vh;margin: 0px;width: 80%;">COMEÇAR HISTÓRIA!</button>
+    <!-- <button onclick="nextBg();">Próxima imagem de fundo!</button> -->
+    <!-- <button onclick="prevBg();">Anterior imagem de fundo!</button> -->
+    <!-- <p id="msg">Exibindo imagem numero: 1</p> -->
 </div>
-<div class="allignBottom registerTag">Ou <a href="index.html">entre</a> na sua conta</div>
-
 <!-- para pegar o q foi enviado pelo metodo GET -->
 <script src="js/getParameterByName.js"></script>
 <script>
@@ -83,36 +62,17 @@
   console.log(foo);
 </script>
 
-<script src="js/trocaFundo.js"></script>
+<!-- <script src="js/trocaFundo.js"></script> -->
 <!-- funções para logar ou registrar -->
 <!-- <script src="js/login_logout.js"></script> -->
 <script>
   const auth = firebase.auth();
-  const userData;
+  var salaSelected;
 
   //colocar todos os botões do formulário dentro de variaveis constantes
     const txtNome = document.getElementById('nome');
-    const txtNome = document.getElementById('nome');
     const btnSignUp = document.getElementById('registerBtn');
-
-  //function to signup
-    btnSignUp.addEventListener('click', e=> {
-      const email =  txtEmail.value;
-      const pass =  txtPass.value;
-      const pass2 =  txtPass2.value;
-      console.log(txtProf.value);
-
-      if (pass == pass2) {
-        const promise = auth.createUserWithEmailAndPassword(email, pass);
-        promise
-          .then(user => console.log(user))
-          .catch(e=> console.log(e.message));
-
-      }else{
-        console.log('passwords dont match!')
-        msgField.innerHTML="Senhas não são iguais!";
-      };
-    });
+    // const msgField = document.getElementById('msg');
 
   //checar se o usuario tá logado ou não
     firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -124,35 +84,10 @@
         // mensagem para visualizar
 
 
-        msgField.innerHTML = "usuario conectado: " + firebaseUser.email;
+        // msgField.innerHTML = "usuario conectado: " + firebaseUser.email;
         // btnSignUp.classList.add('hide');
         // btnLogout.classList.remove('hide');
 
-            console.log("Registrando no RealTimeDb");
-            //TODO: mudar o envio de dados de Firebase para RealTime
-            if (txtProf.value=="true") {
-              //salva em professores
-              //salvar dados no RTDatabase
-                var ref = database.ref('professores');
-                var data = {
-                  nome: txtNome.value,
-                  email: txtEmail.value,
-                  userId: firebaseUser.uid
-                }
-                ref.push(data);
-            }else if(txtProf.value=="false"){
-              //salva em alunos
-              //salvar dados no firestore
-                var ref = database.ref('alunos');
-                var data = {
-                  nome: txtNome.value,
-                  email: txtEmail.value,
-                  userId: firebaseUser.uid
-                }
-                ref.push(data);
-            }else{
-              console.log("falha no true false!");
-            }
         //do logged in stuff
         console.log("doing logged in stuff");
         var divs = document.querySelectorAll('.loggedIn'), i;
@@ -163,10 +98,131 @@
         for (i = 0; i < divs2.length; i++) {
           divs2[i].style.display = "none";
         }
+        
+        //FUNÇÃO PARA LISTAR AS SALAS
+          //referencia das salas
+          var ref = database.ref('salas');
+          ref.once('value', pegarData, erroData);
+          console.log(firebaseUser.displayName);
+
+          //exibindo salas
+          console.log("looking at:");
+          console.log('salas');
+          function pegarData(data) {
+            // console.log(data.val());
+            //salva um objeto com a lista de todas as salas
+            var values = data.val();
+            //Id de todos os contos
+            var contosIds = Object.keys(values);
+            // console.log(contosIds);
+            //trabalhar com cada conto individualmente
+            for (var i = 0; i < contosIds.length; i++) {
+              //
+              var k = contosIds[i];
+              
+              var nome = values[k].nome;
+              var salaID = values[k].salaID;
+              console.log(nome, salaID);
+              //criação do item
+              // Create element with HTML
+              var txt1 = "<li id='"+salaID+"''>"+nome+"</li>";               
+              $("#classList").append(txt1);      // Append the new elements
+            }
+            //iniciar o script para abrir a seleção
+            var tag = document.createElement("script");
+            tag.src = "js/select.js";
+            document.getElementsByTagName("head")[0].appendChild(tag);
+          }
+          function erroData(err) {
+            console.log(err);
+          }
+        //FIM DA FUNÇÃO PARA LISTAR AS SALAS
+
+        //FUNÇÃO PARA CRIAR NOVO CONTO
+          btnSignUp.addEventListener('click', e=> {
+
+            //salvar dados
+            var refsave1 = database.ref('contos');
+            var data = {
+              autor: firebaseUser.displayName,
+              autorID: firebaseUser.uid,
+              nome: txtNome.value,
+              sala: salaSelectedName,
+              salaID: salaSelected
+            }
+            console.log('enviando dados para contos');
+            refsave1.push(data);
+
+            //dar o id para o conto recém criado
+            var ref = database.ref('contos');
+            ref.orderByKey().once("child_added", function(snapshot) {
+              var contoKey = snapshot.key;
+              console.log('Novo conto adicionado! ID do conto: '+snapshot.key);
+              var refsave3 = database.ref('salas/'+salaSelected+'/contos/'+snapshot.key);
+              var data = {
+                ID: snapshot.key
+              }
+              refsave3.update(data);
+
+
+
+              // read the index key
+              var refsave2 = database.ref('salas/'+salaSelected+'/contos/'+ contoKey);
+
+              var data = {
+                //ID: mGroupId,
+                nome: txtNome.value,
+                autor: firebaseUser.displayName,
+                autorID: firebaseUser.uid
+              }
+
+              console.log('enviando dados para salas/'+salaSelected+'/contos');
+              refsave2.update(data);
+
+              var refsave3 = database.ref('user/'+firebaseUser.uid+'/contos/'+contoKey);
+              var data = {
+                nome: txtNome.value,
+                sala: salaSelectedName,
+                salaID: salaSelected
+              }
+              console.log('enviando dados para contos');
+              refsave3.update(data);
+              
+              //checar se a tela está na horizontal
+              if (window.screen.width < window.screen.height) {
+                //mensagem para virar de lado
+                console.log('tela de pé!');
+                document.getElementById('alerta').style.display = "block";
+              }else if(window.screen.width > window.screen.height){
+                console.log('tela de lado!');
+                window.location.href = "index3.html?story="+contoKey;
+              }
+
+              window.addEventListener("orientationchange", screenOrientationCheck);
+
+              function screenOrientationCheck() {
+                //checar se a tela está na horizontal
+                if (window.screen.width < window.screen.height) {
+                  //mensagem para virar de lado
+                  console.log('tela de pé!');
+
+                }else if(window.screen.width > window.screen.height){
+                  console.log('tela de lado!');
+                  window.location.href = "index3.html?story="+contoKey;
+                }
+              }
+
+            });
+
+
+          });
+        //FIM DA CRIAÇÃO DO CONTO
+        
+
       }else{
         console.log('not logged in');
         // do something when he's NOT logged in, like show user info or elements for people that are logged in
-        msgField.innerHTML = "deslogado!";
+        // msgField.innerHTML = "deslogado!";
         //do logged out stuff
         console.log("doing logged out stuff");
         var divs = document.querySelectorAll('.loggedIn'), i;
@@ -180,11 +236,13 @@
       };
     });
 
-  //function to logout
-    btnLogout.addEventListener('click', e=> {
-      firebase.auth().signOut();
-    });
+  // //function to logout
+  //   btnLogout.addEventListener('click', e=> {
+  //     firebase.auth().signOut();
+  //   });
 
-</script>
+
+
+  </script>
 </body>
 </html>

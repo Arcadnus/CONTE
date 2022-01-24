@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://use.typekit.net/gjk2cys.css">
   <link rel="stylesheet" href="css/index.css">
   <title>Registrar</title>
 
@@ -26,32 +27,33 @@
     <div class="logoContainer">
         <img src="img/logo.png">
     </div>
-    <form>
+    <form class="DINosaur-light">
         <input type="text" id="nome" placeholder="Seu Nome">
         <input type="email" id="email" placeholder="Email">
         <input type="password" id="pass" placeholder="Senha">
         <input type="password" id="pass2" placeholder="Confirme a senha">
-        <select id="professor">
+        <select class="DINosaur-medium" id="professor">
             <option value="" disabled selected>Aluno ou Professor?</option>
             <option value="true">Sou Professor!</option>
             <option value="false">Sou um Aluno!</option>
         </select>
     </form>
-        <button id="registerBtn" class="registerBtn orange whiteTxt loggedOut">Registrar!</button>
-        <button id="logoutBtn" class=" registerBtn orange whiteTxt loggedIn">Deslogar!</button>
-    <button onclick="nextBg();">Próxima imagem de fundo!</button>
-    <button onclick="prevBg();">Anterior imagem de fundo!</button>
-    <p id="msg">Exibindo imagem numero: 1</p>
-    <p class="loggedIn">Estou Logado!</p>
-    <p class="loggedOut">Estou Deslogado!</p>
+        <button id="registerBtn" class="registerBtn orange whiteTxt DINosaur-bold loggedOut">REGISTRAR!</button>
+        <a href="index.html"><button class="registerBtn orange whiteTxt DINosaur-bold loggedOut">LOGIN</button></a>
+        <!-- <button id="logoutBtn" class=" registerBtn orange whiteTxt loggedIn">Deslogar!</button> -->
+    <!-- <button onclick="nextBg();">Próxima imagem de fundo!</button> -->
+    <!-- <button onclick="prevBg();">Anterior imagem de fundo!</button> -->
+    <p class="DINosaur-medium" id="msg"></p>
+    <!-- <p class="loggedIn">Estou Logado!</p> -->
+    <!-- <p class="loggedOut">Estou Deslogado!</p> -->
 </div>
-<div class="allignBottom registerTag">Ou <a href="index.html">entre</a> na sua conta</div>
 
 <script src="js/trocaFundo.js"></script>
 <!-- funções para logar ou registrar -->
 <!-- <script src="js/login_logout.js"></script> -->
 <script>
   const auth = firebase.auth();
+      firebase.auth().signOut();
 
   //colocar todos os botões do formulário dentro de variaveis constantes
     const txtNome = document.getElementById('nome');
@@ -74,7 +76,16 @@
         const promise = auth.createUserWithEmailAndPassword(email, pass);
         promise
           .then(user => console.log(user))
-          .catch(e=> console.log(e.message));
+          .catch(e=> msg.innerHTML =e.message);
+          var user = firebase.auth().currentUser;
+          //registrar nome do usuario
+          user.updateProfile({
+            displayName: txtNome.value
+          }).then(function() {
+            // Update successful.
+          }).catch(function(error) {
+            // An error happened.
+          });
 
       }else{
         console.log('passwords dont match!')
@@ -92,7 +103,7 @@
         // mensagem para visualizar
 
 
-        msgField.innerHTML = "usuario conectado: " + firebaseUser.email;
+        // msgField.innerHTML = "usuario conectado: " + firebaseUser.email;
         // btnSignUp.classList.add('hide');
         // btnLogout.classList.remove('hide');
 
@@ -101,23 +112,48 @@
             if (txtProf.value=="true") {
               //salva em professores
               //salvar dados no RTDatabase
-                var ref = database.ref('professores');
+                var ref = database.ref('user/'+firebaseUser.uid);
                 var data = {
                   nome: txtNome.value,
                   email: txtEmail.value,
+                  professor: true,
                   userId: firebaseUser.uid
                 }
-                ref.push(data);
+                ref.update(data);
+
+                //update profile
+                var user = firebase.auth().currentUser;
+
+                user.updateProfile({
+                  displayName: txtNome.value
+                }).then(function() {
+                  // console.log(firebaseUser.displayName);
+                }).catch(function(error) {
+                  // An error happened.
+                  console.log('Error setting Display Name! Error:');
+                  console.log(error);
+                });
             }else if(txtProf.value=="false"){
               //salva em alunos
               //salvar dados no firestore
-                var ref = database.ref('alunos');
+                var ref = database.ref('user/'+firebaseUser.uid);
                 var data = {
                   nome: txtNome.value,
                   email: txtEmail.value,
+                  professor: false,
                   userId: firebaseUser.uid
                 }
-                ref.push(data);
+                ref.update(data);
+                user.updateProfile({
+                  displayName: txtNome.value
+                }).then(function() {
+                  // console.log(firebaseUser.displayName);
+                }).catch(function(error) {
+                  // An error happened.
+                  console.log('Error setting Display Name! Error:');
+                  console.log(error);
+                });
+
             }else{
               console.log("falha no true false!");
             }
@@ -131,10 +167,12 @@
         for (i = 0; i < divs2.length; i++) {
           divs2[i].style.display = "none";
         }
+      
+        window.location.href = "index.html";
       }else{
         console.log('not logged in');
         // do something when he's NOT logged in, like show user info or elements for people that are logged in
-        msgField.innerHTML = "deslogado!";
+        // msgField.innerHTML = "deslogado!";
         //do logged out stuff
         console.log("doing logged out stuff");
         var divs = document.querySelectorAll('.loggedIn'), i;
@@ -149,9 +187,9 @@
     });
 
   //function to logout
-    btnLogout.addEventListener('click', e=> {
-      firebase.auth().signOut();
-    });
+    // btnLogout.addEventListener('click', e=> {
+    //   firebase.auth().signOut();
+    // });
 
 </script>
 </body>

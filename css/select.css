@@ -1,14 +1,9 @@
 .dropdown {
-  width: 300px;
-  display: inline-block;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 20px;
   box-shadow: 0 0 2px rgb(204, 204, 204);
   transition: all .5s ease;
   position: relative;
-  font-size: 14px;
-  color: #474747;
-  height: 100%;
   text-align: left
 }
 
@@ -47,19 +42,19 @@
 }
 
 .dropdown .dropdown-menu {
-    position: absolute;
     background-color: #fff;
     width: 100%;
     left: 0;
     margin-top: 1px;
-    box-shadow: 0 1px 2px rgb(204, 204, 204);
     border-radius: 0 1px 5px 5px;
-    overflow: hidden;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
     display: none;
-    max-height: 144px;
+    /*max-height: 144px;*/
     overflow-y: auto;
     z-index: 9
 }
+
 
 .dropdown .dropdown-menu li {
     padding: 10px;

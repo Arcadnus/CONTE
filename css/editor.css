@@ -6,6 +6,128 @@
   border-width: 0px;
 }
 
+/*FONTE DINOSAUR*/
+
+  .dinosaur{
+    font-family: dinosaur, sans-serif;
+  }
+
+  .DINosaur-book{
+    font-family: dinosaur, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  /*
+  .DINosaur-book-italic{
+    font-family: dinosaur, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .DINosaur-bold-italic{
+    font-family: dinosaur, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }*/
+
+  .DINosaur-bold{
+    font-family: dinosaur, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .DINosaur-medium{
+    font-family: dinosaur, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .DINousaur-light{
+    font-family: dinosaur, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+/*FIM DA FONTE DINOSAUR*/
+
+
+
+/**
+* How to make 3-corner-rounded triangle in CSS (SO)
+* http://stackoverflow.com/q/14446677/1397351
+*/
+
+  .triangle-left,
+  .triangle-right{
+    position: relative;
+    text-align: left;
+  }
+  .triangle-left:before,
+  .triangle-left:after,
+  .triangle-right:before,
+  .triangle-right:after{
+    content: '';
+    position: absolute;
+    background-color: inherit;
+  }
+  .triangle-left,
+  .triangle-left:before,
+  .triangle-left:after,
+  .triangle-right,
+  .triangle-right:before,
+  .triangle-right:after {
+    width:  1.7em;
+    height: 1.7em;
+    border-top-right-radius: 30%;
+  }
+
+  .triangle-left{
+    transform: rotate(-150deg) skewX(-30deg) scale(1,.866);
+  }
+
+  .triangle-right {
+    transform: rotate(30deg) skewX(-30deg) scale(1,.866);
+  }
+  
+  .triangle-left:before,
+  .triangle-right:before {
+    transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
+  }
+  
+  .triangle-left:after,
+  .triangle-right:after {
+    transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
+  }
+
+  /* styles below for demonstration purposes only */
+  .triangle-left:hover, .triangle-right:hover { background: rgba(0,0,255,.5) }
+  .triangle-left:hover:before,.triangle-right:hover:before { background: rgba(255,0,0,.5) }
+  .triangle-left:hover:after,.triangle-right:hover:after { background: rgba(255,255,0,.5) }
+  
+
+.alerta{
+  background-color: rgba(0,0,0,0.6);
+  height: 100%;
+  width: 100vw;
+  text-align-last: center;
+  position: absolute;
+  padding-top: 41vh;
+  z-index: 99999;
+  top: 0;
+  display: none;
+}
+.alerta p{
+  border-style: solid;
+  border-width: thick;
+  border-color: white;
+  width: 40%;
+  margin: auto;
+  color: white;
+  height: auto;
+  border-radius: 53px;
+  padding: 5vh;
+  font-weight: bold;
+}
 canvas,
 .upper-canvas,
 .canvas-container{
@@ -16,26 +138,16 @@ img{
   width: 100%;
 }
 
-.myBtn{
-  width:10vw;
-  height: 10vw;
-  background-color: lightgrey;
-  border-radius: 999px;
-  border-style: solid;
-  border-color: white;
-  /*
-  shadow designed with help from:
+.hidden{
+  display: none;
+}
 
-  The ultimate CSS tools for web designers - <https://www.cssmatic.com/box-shadow>
-  
-  */
-  -webkit-box-shadow: 6px 7px 10px -1px rgba(0,0,0,0.12);
-  -moz-box-shadow: 6px 7px 10px -1px rgba(0,0,0,0.12);
-  box-shadow: 6px 7px 10px -1px rgba(0,0,0,0.12);
+.myBtn{
+  width: 8.8vw;
+  height: 9vw;
 }
 
 .btnOpened{
-  background-color: dimgray !important;
   z-index: 1000 !important;
 }
 
@@ -57,20 +169,52 @@ img{
   .topBtn{
     position: relative;
     float: left;
+    overflow: hidden;
+    border-radius: 999px;
+    margin: 0 1.1vw;
   }
 
   .topBtn img{
-    position: absolute;
-    top: 11px;
-    left: 11px;
-    bottom: 0;
-    right: 0;
-    width: 70% !important;
+    /*position: absolute;*/
+    /*top: -44.1%;*/
+    /*left: -54%;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    margin: -4.1vw -5.19vw;
+    width: 19vw !important;
+  }
+
+.bottomEditor{ 
+  position: absolute; 
+  display: block; 
+  bottom: 0; 
+  left: 0;
+  z-index: 999;
+} 
+  .bottomEditor div{ 
+    float: left;
+    margin: 2vw; 
+  }
+
+  .circle{
+    background-color: blue;
+    border-radius: 9999px;
+    height: 7vw;
+    width: 7vw;
+    padding-top: 0;
+    margin-top: 0vw !important;
+  }
+
+  .circle p{
+    font-size: 4.5vw;
+    text-align: center;
+    margin-top: -0.3vw;
+    margin: auto;
   }
 
 .firstLi{
   right: 2vw;
-  bottom: 2vw;
+  bottom: 1vw;
   display: flex;
   position: absolute;
   z-index: 999;
@@ -78,7 +222,7 @@ img{
 
 .firstUl{
   margin: 1vw;
-  text-align: center;
+  /*text-align: center;*/
 }
 
 /*abas que abrem ao clicar*/
@@ -120,8 +264,10 @@ ul li ul img{
 
 .firstUl,
 .secondUl{
-  width: 10vw;
-  height: 10vw;
+  width: 9.2vw;
+  height: 9vw;
+  overflow: hidden;
+  border-radius: 999px;
 }
 
 .show1,
@@ -141,55 +287,35 @@ ul li ul img{
 .show1 img,
 .show2 img,
 .show3 img{
-  width: 30%
+  width: 19%
 }
 
 #tab1{
   /*VALOR ANTES DE ABRIR*/
     margin-top: 86vh;
     margin-left: 68vw;
-  background-color: green;
+  background-color: #C5D2DA;
 }
 
 #tab2{
   /*VALOR ANTES DE ABRIR*/
     margin-top: 86vh;
     margin-left: 80vw;
-  background-color: blue;
+  background-color: #C5D2DA;
 }
 
 #tab3{
   /*VALOR ANTES DE ABRIR*/
     margin-top: 86vh;
     margin-left: 91vw;
-  background-color: red;
+  background-color: #C5D2DA;
 }
 
-#imgBtn1{
-  position: absolute;
-  width: 7vw;
-  left: 6.8%;
-  top: 50%;
-  transform: translateY(-52%);
-  margin: 0px;
-}
-
-#imgBtn2{
-  position: absolute;
-  width: 7vw;
-  left: 40.3%;
-  top: 50%;
-  transform: translateY(-52%);
-  margin: 0px;
-}
-
+#imgBtn1,
+#imgBtn2,
 #imgBtn3{
-  position: absolute;
-  width: 7vw;
-  left: 73.8%;
-  top: 50%;
-  transform: translateY(-52%);
-  margin: 0px;
+  width: 19vw;
+  margin: -12.9vw -5.1vw !important; 
 }
 
 .hide{
@@ -197,23 +323,51 @@ ul li ul img{
 }
 
 .gray{
-  background-color: lightgray;
+  background-color: lightgray !important;
+}
+
+.whiteTxt{
+  color: white !important;
 }
 
 .red{
-    background-color: red;
+  background-color: #e55a46 !important;
 }
 
-.blue{
-    background-color: blue;
+.redTxt{
+  color: #e55a46 !important;
 }
 
-.green{
-    background-color: green;
+.orange{
+  background-color: #f3aa4d !important;
+}
+
+.orangeTxt{
+  color: #f3aa4d !important;
 }
 
 .yellow{
-    background-color: yellow;
+  background-color: #ebcc41 !important;
+}
+
+.yellowTxt{
+  color: #ebcc41 !important;
+}
+
+.green{
+  background-color: #76b66a !important;
+}
+
+.greenTxt{
+  color: #76b66a !important;
+}
+
+.blue{
+  background-color: #56bbd9 !important;
+}
+
+.blueTxt{
+  color: #56bbd9 !important;
 }
 
 .colors{

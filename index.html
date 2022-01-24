@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://use.typekit.net/gjk2cys.css">
   <link rel="stylesheet" href="css/index.css">
   <title>Conte - Home</title>
 
@@ -31,41 +32,59 @@
         <input type="email" id="email" placeholder="Email" required>
         <input type="password" id="pass" placeholder="Senha" required>
     </form>
-    <button id="loginBtn" class="registerBtn orange whiteTxt">Login</button>
+    <p class="DINosaur-medium" id="msg"></p>
+    <button id="loginBtn" class="registerBtn orange whiteTxt DINosaur-bold">LOGIN</button>
+    <a href="register.html">
+      <button class="registerBtn orange whiteTxt DINosaur-bold">REGISTRAR!</button>
+    </a>
 
-    <button id="logoutBtn" class="registerBtn orange whiteTxt hide">Logout</button>
+    <!-- <button id="logoutBtn" class="registerBtn orange whiteTxt DINosaur-bold hide">Logout</button> -->
     <!-- <button onclick="nextBg();">Próxima imagem de fundo!</button> -->
     <!-- <button onclick="prevBg();">Anterior imagem de fundo!</button> -->
-    <!-- <p id="msg">Exibindo imagem numero: 1</p> -->
 </div>
-<div class="allignBottom registerTag">Ou <a href="register.html">Registra</a> Com e-mail</div>
+<!-- <div class="">Ir Direto para o <a href="index3.html">Editor</a></div> -->
 
 <script src="js/trocaFundo.js"></script>
 <!-- funções para logar ou registrar -->
 <!-- <script src="js/login_logout.js"></script> -->
 <script>
   const auth = firebase.auth();
+      firebase.auth().signOut();
+  
   
   //colocar todos os botões do formulário dentro de variaveis constantes
   const txtEmail = document.getElementById('email');
   const txtPass = document.getElementById('pass');
   const btnLogin = document.getElementById('loginBtn');
   const btnLogout = document.getElementById('logoutBtn');
-  // const msgField = document.getElementById('msg');
+  const msgField = document.getElementById('msg');
 
   //function to login
     btnLogin.addEventListener('click', e=> {
       var email =  txtEmail.value;
       var pass =  txtPass.value;
 
-      const promise = auth.signInWithEmailAndPassword(email, pass);
-      // promise.catch(e=> msgField.innerHTML = (e.message));
+      const promise = auth.signInWithEmailAndPassword(email, pass).catch(function(e) {
+          // Handle Errors here.
+          console.log(e);
+          if (e.code=="auth/invalid-email") {
+            msg.innerHTML = 'USE SEU EMAIL';
+          }else if(e.code=="auth/user-disabled"){
+            msg.innerHTML = 'CONTA DESATIVADA';
+          }else if(e.code=="auth/user-not-found"){
+            msg.innerHTML = 'USUÁRIO NÃO ENCONTRADO';
+          }else if(e.code=="auth/wrong-password"){
+            msg.innerHTML = 'SENHA ERRADA';
+          }else{
+            msg.innerHTML = 'uknown error!';
+          }
+        });
     });
 
   //function to logout
-    btnLogout.addEventListener('click', e=> {
-      firebase.auth().signOut();
-    });
+    // btnLogout.addEventListener('click', e=> {
+    //   firebase.auth().signOut();
+    // });
 
   //checar se o usuario tá logado ou não
     firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -74,8 +93,6 @@
         // do something when he log in, like show any elements that's supposed to be seen ONLY when logged in
         console.log(firebaseUser.email);
         console.log(firebaseUser.uid);
-        btnLogin.classList.add('hide');
-        btnLogout.classList.remove('hide');
         window.location.href = "storyList.html";
       }else{
         console.log('not logged in');

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://use.typekit.net/gjk2cys.css">
   <link rel="stylesheet" href="css/index.css">
   <title>Selecionar Turma</title>
 
@@ -24,7 +25,7 @@
   <div class="logoContainer">
       <img src="img/logo.png">
   </div>
-  <form>
+  <form class="DINosaur-medium">
     <!-- <input type="text" id="nome" placeholder="Nome da História"> -->
     <select id="salaSelect">
         <option value="" disabled selected>SELECIONA A TURMA</option>
@@ -32,14 +33,13 @@
         <a href="#"><option>CRIAR NOVA TURMA <img src="img/icones/add_circle_outlines.svg"></option></a>
     </select>
   </form>
-  <button id="registerBtn" class="registerBtn orange whiteTxt loggedOut">COMEÇAR HISTÓRIA!</button>
-  <button onclick="nextBg();">Próxima imagem de fundo!</button>
-  <button onclick="prevBg();">Anterior imagem de fundo!</button>
-  <p id="msg">Exibindo imagem numero: 1</p>
-  <p class="loggedIn">Estou Logado!</p>
-  <p class="loggedOut">Estou Deslogado!</p>
+  <!-- <button id="registerBtn" class="registerBtn orange whiteTxt loggedOut">COMEÇAR HISTÓRIA!</button> -->
+  <!-- <button onclick="nextBg();">Próxima imagem de fundo!</button> -->
+  <!-- <button onclick="prevBg();">Anterior imagem de fundo!</button> -->
+  <p class="DINosaur-medium" id="msg"></p>
+  <!-- <p class="loggedIn">Estou Logado!</p> -->
+  <!-- <p class="loggedOut">Estou Deslogado!</p> -->
 </div>
-<div class="allignBottom registerTag">Ou <a href="index.html">entre</a> na sua conta</div>
 
 <!-- para pegar o q foi enviado pelo metodo GET -->
 <script src="js/getParameterByName.js"></script>
@@ -48,7 +48,7 @@
   console.log(foo);
 </script>
 
-<script src="js/trocaFundo.js"></script>
+<!-- <script src="js/trocaFundo.js"></script> -->
 <!-- funções para logar ou registrar -->
 <!-- <script src="js/login_logout.js"></script> -->
 <script>
@@ -90,7 +90,7 @@
         // mensagem para visualizar
 
 
-        msgField.innerHTML = "usuario conectado: " + firebaseUser.email;
+        // msgField.innerHTML = "usuario conectado: " + firebaseUser.email;
         // btnSignUp.classList.add('hide');
         // btnLogout.classList.remove('hide');
 

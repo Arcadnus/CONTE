@@ -5,26 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://use.typekit.net/gjk2cys.css">
   <link rel="stylesheet" href="css/index.css">
   <title>Lista de Histórias</title>
 
 </head>
 <body class="gray">
+  <div class="alerta" id="alerta"><p class="DINosaur-bold orange">VIRE A TELA DE LADO~</p></div>
+  <div id="videoDisplay" class="videoDisplay">
+    <video id="videoObject" class="videoBox">
+      <source src="video/hist.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+  </div>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
   <!-- Compiled and minified JavaScript -->
   <script src="js/jquery.min.js"></script>
-  <!-- <script src="js/auth.js"></script> -->
 
 <div id="perfilTab" class="perfilTab orange">
   <div class="perfilDetails">
     <div class="perfilImgContainer">
       <img id="perfilImage" src="img/logo_reducao.png">
     </div>
-    <p id="hiMsg" class="hiMsg dinosaur">OLÁ ESTRANHO!</p>
+    <p id="hiMsg" class="hiMsg DINosaur-medium">OLÁ ESTRANHO!</p>
   </div>
   <a href="selecionarTurma.html">
-    <button class="btnPerfil">TURMAS</button>
+    <button class="btnPerfil DINosaur-bold">TURMAS</button>
   </a>
 </div>
 <div class="perfilOut" id="perfilOut"></div>
@@ -52,14 +59,208 @@
 
 </div>
 <div class="allignBottom SLBtnWrapper">
-  <div class="SLBtn orange whiteTxt" id="SLBtn">NOVA HISTÓRIA</div>
+  <div class="SLBtn orange whiteTxt DINosaur-bold">NOVA HISTÓRIA</div>
 </div>
-<div class="allignBottom SLBtnWrapper">
+<div class="allignBottom SLBtnWrapper" id="SLBtn">
   <div class="SLCircle orange whiteTxt" id="SLCircle">
-    <div class="SLCircleChild"><img src="img/icones/svg/icones-13.svg"></div>
+    <div class="SLCircleChild"><img src="img/icones/svg/new/icones_com_o_circulo_18.svg"></div>
   </div>
 </div>
 <script type="text/javascript" src="js/auth.js"></script>
 <script type="text/javascript" src="js/storyList.js"></script>
+<script>
+    const newStoryBtn = document.getElementById('SLBtn');
+  const newStoryCircle = document.getElementById('SLCircle');
+  const logoBtn = document.getElementById('logoBtn');
+  const perfilTab = document.getElementById('perfilTab');
+  const perfilOut = document.getElementById('perfilOut');
+  const alerta = document.getElementById('alerta');
+  const videoDisplay = document.getElementById('videoDisplay');
+  const videoObject = document.getElementById('videoObject');
+  var varVideo = 0;
+
+
+  //function to logout
+    perfilOut.addEventListener('click', esconderPerfil);
+    alerta.addEventListener('click', closeAlerta);
+    newStoryCircle.addEventListener('click', redirect2);
+    newStoryBtn.addEventListener('click', redirect3);
+    logoBtn.addEventListener('click', mostrarPerfil);
+
+function closeAlerta() {
+  if (varVideo == 1) {
+    alerta.style.display = "none";
+    varVideo = 0;
+  }
+}
+
+function esconderPerfil() {
+  if (perfilTab.style.top == "0px") {
+    console.log('escondendo Perfil');
+    perfilTab.style.top = "-50vh";
+    perfilOut.style.display = "none";
+  }else{
+    console.log('nada feito');
+  }
+}
+
+function redirect2(){
+  window.location.href = "newStory.html?";
+}
+function redirect3(){
+  window.location.href = "newStory.html?";
+}
+
+function mostrarPerfil() {
+  // perfilTab.style.top = "0px";
+  // perfilOut.style.display = "block";
+}
+
+
+function redirect1(id) {
+  console.log('link CLICADO!')
+  //checar se a tela está na horizontal
+  if (window.screen.width < window.screen.height) {
+    //mensagem para virar de lado
+    console.log('tela de pé!');
+    document.getElementById('alerta').style.display = "block";
+  }else if(window.screen.width > window.screen.height){
+    console.log('tela de lado!');
+    window.location.href = "index3.html?story="+id;
+  }
+  window.addEventListener("orientationchange", screenOrientationCheck);
+  function screenOrientationCheck() {
+    //checar se a tela está na horizontal
+    if (window.screen.width < window.screen.height) {
+      //mensagem para virar de lado
+      console.log('tela de pé!');
+    }else if(window.screen.width > window.screen.height){
+      console.log('tela de lado!');
+      window.location.href = "index3.html?story="+id;
+    }
+  }
+}
+
+function playVideo() {
+  console.log('video CLICADO!');
+  //checar se a tela está na horizontal
+  if (window.screen.width < window.screen.height) {
+    //mensagem para virar de lado
+    console.log('tela de pé!');
+    alerta.style.display = "block";
+    varVideo = 1;
+  }else if(window.screen.width > window.screen.height){
+    console.log('tela de lado!');
+    videoDisplay.style.display = "block";
+  };
+
+  setTimeout(listening, 100);
+}
+function listening(){
+
+
+  window.addEventListener("orientationchange", videoOrientationCheck);
+  function videoOrientationCheck() {
+    //checar se a tela está na horizontal
+    if (window.screen.width < window.screen.height) {
+      //mensagem para virar de lado
+      console.log('tela de pé!');
+      videoDisplay.style.display = "none";
+      videoObject.pause();
+      // window.removeEventListener("orientationchange", videoOrientationCheck);
+    }else if(window.screen.width > window.screen.height){
+      console.log('tela de lado!');
+      videoDisplay.style.display = "block";
+      videoObject.play();
+    };
+  };
+};
+
+
+//o Firebase é iniciado pelo arquivo auth.js
+
+  //checar se o usuario tá logado ou não
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      if (firebaseUser) {
+        // console.log(firebaseUser);
+        // do something when he log in, like show any elements that's supposed to be seen ONLY when logged in
+        // console.log(firebaseUser.email);
+        console.log(firebaseUser.uid);          
+            var ref = database.ref('user/' + firebaseUser.uid+'/contos');
+            ref.once('value', pegarData, erroData);
+            console.log(firebaseUser);
+            console.log(firebaseUser.displayName);
+            
+
+            console.log("looking at:");
+            console.log('user/' + firebaseUser.uid+'/contos');
+            function pegarData(data) {
+              //salva um objeto com a lista de todos os contos
+              var contos = data.val();
+              
+              hiMsg.innerHTML = "OLÁ, "+firebaseUser.displayName;
+              
+              //Id de todos os contos
+              var contosIds = Object.keys(contos);
+              // console.log(contosIds);
+              //trabalhar com cada conto individualmente
+              for (var i = 0; i < contosIds.length; i++) {
+                //
+                var k = contosIds[i];
+
+                var nome = contos[k].nome;
+                var sala = contos[k].sala;
+                console.log(nome, sala);
+                //sorteio de cor
+
+                var rndNum = Math.floor(Math.random() * 3);
+                console.log(rndNum);
+                var pickedColor;
+                if (rndNum == 1) {
+                  pickedColor = "red";
+                }else if (rndNum == 2) {
+                  pickedColor = "yellow";
+                }else if (rndNum == 0) {
+                  pickedColor = "green";
+                }else{
+                  console.log("erro na escolha das cores!");
+                }
+ 
+                //criação do item
+                var txt1 = 
+                  "<div class='storyItem'>" +
+                    "<div class='storyDivEsq'>" +
+                      "<div class ='playButton' onclick='playVideo();'>"+
+                        "<img src='img/icones/svg/new/icones_com_o_circulo_preview.svg'>"+
+                      "</div>"+
+                    "</div>" +
+                    "<div class='storyDivDir "+pickedColor+"'>" +
+                      "<p class='storyTitle'>" + nome + "</p>" +
+                      "<p class='storyClass'>" + sala + "</p>" +
+                      "<a id='"+k+"' onclick='redirect1(this.id);' href='#'>" +
+                        "<div class='storyEditBtn orange'>EDITAR</div>" +
+                      "</a>" +
+                      "<a href='#'>" +
+                        "<div class='storyShareBtn'>COMPARTILHAR</div>" +
+                      "</a>" +
+                      "<a href='#'>" +
+                        "<div class='storyDelBtn'>APAGAR</div>" +
+                      "</a>" +
+                    "</div>" +
+                  "</div>";               // Create element with HTML 
+                $(".container").append(txt1);      // Append the new elements
+              };
+            }
+            function erroData(err) {
+              console.log(err);
+            }
+      }else{
+        console.log('not logged in');
+        window.location.href = "index.html";
+        // do something when he's NOT logged in, like hide user info or elements for people that are logged in
+        
+      };
+    });
+</script>
 </body>
 </html>
