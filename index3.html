@@ -8,89 +8,100 @@
   <link rel="stylesheet" href="css/materialize.min.css">
   <link rel="stylesheet" href="css/index.css">
   <title>Editor</title>
-  <style>
-
-
-
-  </style>
 
   <!-- fabric.js -->
   <script src="js/fabric.min.js"></script>
   <script src="js/canvas-toBlob.js"></script>
   <script src="js/FileSaver.min.js"></script>
-
-
+  
 </head>
 <body class="grey lighten-3">
 
-	<ul id="nav-mobile" class="firstUl right">
-		<li class="firstLi" id="1" onclick="opentab(this.id)">
-			<ul class="secondUl" id="tab1">
-        <li class="secondLi" id="insertImage1">
+	<li id="nav-mobile" class="firstLi right">
+		<ul class="firstUl" id="1" onclick="opentab(this.id)">
+			<li class="secondLi" id="tab1">
+        <ul class="secondUl" id="insertImage1">
           <img src="img/stickers/sticker_001.png">
-        </li>
-        <li class="secondLi" id="insertImage2">
+        </ul>
+        <ul class="secondUl" id="insertImage2">
           <img src="img/stickers/sticker_002.png">
-        </li>
-        <li class="secondLi" id="insertImage3">
+        </ul>
+        <ul class="secondUl" id="insertImage3">
           <img src="img/stickers/sticker_003.png">
-        </li>
-        <li class="secondLi" id="insertImage4">
-        <img src="img/stickers/sticker_004.png">
-        </li>
-        <li class="secondLi">
-          <img src="img/logo.png">
-        </li>
-      </ul>
+        </ul>
+        <ul class="secondUl" id="insertImage4">
+          <img src="img/stickers/sticker_004.png">
+        </ul>
+        <ul class="secondUl">
+          <img src="img/stickers/sticker_004.png">
+        </ul>
+        <ul class="secondUl">
+          <img src="img/stickers/sticker_004.png">
+        </ul>
+        <ul class="secondUl">
+          <img src="img/stickers/sticker_004.png">
+        </ul>
+        <ul class="secondUl">
+          <img src="img/stickers/sticker_004.png">
+        </ul>
+        <ul class="secondUl">
+          <img src="img/stickers/sticker_004.png">
+        </ul>
+        <ul class="secondUl">
+          <img src="img/stickers/sticker_004.png">
+        </ul>
+        <ul class="secondUl">
+          <img src="img/stickers/sticker_004.png">
+        </ul>
+      </li>
         <img id="imgBtn1" src="img/logo.png">
-		</li>
-    <li class="firstLi" id="2" onclick="opentab(this.id)">
-      <ul class="secondUl" id="tab2">
-        <li class="secondLi red" id="bgRed">
-        </li>
-        <li class="secondLi blue" id="bgBlue">
-        </li>
-        <li class="secondLi green" id="bgGreen">
-        </li>
-        <li class="secondLi yellow" id="bgYellow">
-        </li>
-        <li class="secondLi colors">
-        </li>
-      </ul>
+		</ul>
+    <ul class="firstUl" id="2" onclick="opentab(this.id)">
+      <li class="secondLi" id="tab2">
+        <ul class="secondUl red" id="bgRed">
+        </ul>
+        <ul class="secondUl blue" id="bgBlue">
+        </ul>
+        <ul class="secondUl green" id="bgGreen">
+        </ul>
+        <ul class="secondUl yellow" id="bgYellow">
+        </ul>
+        <ul class="secondUl colors">
+        </ul>
+      </li>
         <div class="colors2"></div>
-    </li>
-    <li class="firstLi" id="3" onclick="opentab(this.id)">
-      <ul class="secondUl" id="tab3">
-        <li class="secondLi">
-        </li>
-        <li class="secondLi">
-        </li>
-        <li class="secondLi">
-        </li>
-        <li class="secondLi">
-        </li>
-        <li class="secondLi">
-        </li>
-      </ul>
+    </ul>
+    <ul class="firstUl" id="3" onclick="opentab(this.id)">
+      <li class="secondLi" id="tab3">
+        <ul class="secondUl">
+        </ul>
+        <ul class="secondUl">
+        </ul>
+        <ul class="secondUl">
+        </ul>
+        <ul class="secondUl">
+        </ul>
+        <ul class="secondUl">
+        </ul>
+      </li>
         <div class=""></div>
-    </li>
-    <li class="firstLi" id="4" onclick="opentab(this.id)">
-      <ul class="secondUl" id="tab4">
-        <li class="secondLi">
-        </li>
-        <li class="secondLi">
-        </li>
-        <li class="secondLi">
-        </li>
-        <li class="secondLi">
-        </li>
-        <li class="secondLi">
-        </li>
-      </ul>
+    </ul>
+    <ul class="firstUl" id="4" onclick="opentab(this.id)">
+      <li class="secondLi" id="tab4">
+        <ul class="secondUl">
+        </ul>
+        <ul class="secondUl">
+        </ul>
+        <ul class="secondUl">
+        </ul>
+        <ul class="secondUl">
+        </ul>
+        <ul class="secondUl">
+        </ul>
+      </li>
         <div class=""></div>
-    </li>
-
-	</ul>
+    </ul>
+	</li>
 
   <!-- testes com o Fabric.js -->
   <canvas id="canvaassss"></canvas>
@@ -98,8 +109,6 @@
   <!-- <button class="button" id="insertImage">Inserir Nova Imagem!</button> -->
   <p id="uploadResult"></p>
   <button id="saveImage">Salvar minha imagem no banco de dados!</button>
-
-
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
@@ -118,7 +127,6 @@
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-
   </script>
   <!-- Minified script for opening and closing of html components -->
   <script src="js/materialize.min.js"></script>
@@ -129,7 +137,6 @@
   <script src="js/index.js"></script>
 
   <script>
-
     //REDIMENSIONAR O CANVAS PARA ENCAIXAR NA TELA
       (function() {
         var
@@ -284,6 +291,38 @@
       };
 
     //EXPANDE OBJETOS AO ARRASTAR
+
+      /*function animate(e, dir) {
+        if (e.target) {
+          fabric.util.animate({
+            startValue: e.target.get('angle'),
+            endValue: e.target.get('angle') + (dir ? 10 : -10),
+            duration: 100,
+            onChange: function(value) {
+              e.target.setAngle(value);
+              canvas.renderAll();
+            },
+            onComplete: function() {
+              e.target.setCoords();
+            }
+          });
+          fabric.util.animate({
+            startValue: e.target.get('scaleX'),
+            endValue: e.target.get('scaleX') + (dir ? 0.2 : -0.2),
+            duration: 100,
+            onChange: function(value) {
+              e.target.scale(value);
+              canvas.renderAll();
+            },
+            onComplete: function() {
+              e.target.setCoords();
+            }
+          });
+        }
+      }
+      canvas.on('mouse:down', function(e) { animate(e, 1); });
+      canvas.on('mouse:up', function(e) { animate(e, 0); });
+      this.__canvases.push(canvas);*/
 
   </script>
 

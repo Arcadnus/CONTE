@@ -13,7 +13,7 @@
   <script src="js/canvas-toBlob.js"></script>
   <script src="js/FileSaver.min.js"></script>
 
-  <title>GameGuidez</title>
+  <title>Página Inicial</title>
   <style>
     #canvaassss,
     .upper-canvas,
@@ -57,13 +57,16 @@
             <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
           </li>
           <li class="logged-out">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+            <a href="micTest.html" class="grey-text">Microphones</a>
           </li>
           <li class="logged-out">
             <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
           </li>
           <li class="logged-out">
             <a href="index3.html" class="grey-text">Editor</a>
+          </li>
+          <li class="logged-out">
+            <a href="downloadImages.html" class="grey-text">Listar Histórias</a>
           </li>
       </ul>
     </div>
@@ -91,9 +94,9 @@
     <li class="logged-out">
       <a href="index3.html" class="grey-text">Editor</a>
     </li>
-    <!-- <li class="logged-out">
-      <a href="index2.html" class="grey-text">Página Logado</a>
-    </li> -->
+    <li class="logged-out">
+      <a href="downloadImages.html" class="grey-text">Listar Histórias</a>
+    </li>
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"></i></a>
 
@@ -266,6 +269,7 @@
         //saveAs(blob, "img/canvas/nome.png"); //salvar imagem em pasta local
         //create a storage Reference 
         var storageRef = firebase.storage().ref('editor_output/img'+saveCount+'.png');
+        
         //send arquive(blob)
         var task = storageRef.put(blob);
         //update progress bar

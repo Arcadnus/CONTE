@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<title>
+		Download and Listing
+	</title>
+</head>
+<body class="grey lighten-3">
+
+	<img id="myimg">
+
+
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAhjQ3jcnWyE6Hcq__AbkJvdjKKaJzmWhE",
+      authDomain: "teste-2-de-projetos.firebaseapp.com",
+      databaseURL: "https://teste-2-de-projetos.firebaseio.com",
+      projectId: "teste-2-de-projetos",
+      storageBucket: "teste-2-de-projetos.appspot.com"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+	</script>
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/auth.js"></script>
+
+	<script>
+
+		// Create a reference from a Google Cloud Storage URI
+		var storage = firebase.storage();
+		var storageRef = storage.ref();
+
+		// Points to the root reference
+		var storageRef = firebase.storage().ref();
+
+		// Points to 'editor_output'
+		var imagesRef = storageRef.child('editor_output');
+
+		//contador para as imagens
+		var i = 0;
+		while (i < 3) { //nº de imagens no banco de dados
+
+			i++;
+
+			storageRef.child('editor_output/img'+i+'.png').getDownloadURL().then(function(url) {
+			  // `url` is the download URL for 'images/stars.jpg'
+
+			  // This can be downloaded directly:
+			  var xhr = new XMLHttpRequest();
+			  xhr.responseType = 'blob';
+			  xhr.onload = function(event) {
+			    var blob = xhr.response;
+			  };
+			  xhr.open('GET', url);
+			  xhr.send();
+
+			  // Or inserted into an <img> element:
+			  // var img = document.getElementById('myimg');
+			  // img.src = url;
+
+			  //OR CREATE AN <img> ELEMENTOOOO:
+			  var img = new Image(300);
+			  img.src = url;
+			  document.body.appendChild(img);
+
+			}).catch(function(error) {
+			  // Handle any errors
+			});
+
+
+		}
+
+
+		
+
+	</script>
+
+
+</body>
+</html>

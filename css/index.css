@@ -1,54 +1,57 @@
 canvas,
 .upper-canvas,
 .canvas-container{
-    z-index: 0;
+  z-index: 0;
 }
 
-.firstUl{ 
-  position: absolute !important;
+.firstLi{
+  right: 2vw;
+  bottom: 2vw;
+  display: flex;
+  position: absolute;
   z-index: 999;
-  vertical-align: bottom;
-  right: 1vw;
 }
 
-li{
-  height: 20vh;
-  width: 20vh;
-  margin-left: 2vh;
+.firstUl{
+  margin-left: 1vw;
   text-align: center;
+  border-radius: 20px;
   background-color: lightgrey;
   border-radius: 20px;
 }
 
-.firstLi{
-  margin-bottom: 3vh;
+.secondLi{
+  width: 32vw;
+  margin-top: -24vw;
+  max-height: 22vw;
+  overflow: scroll;
+  display: none;
 }
 
 .secondUl{
-  display: none;
-  float: right;
+  display: inline;
 }
+
+
+ul img{
+  height: 18vh;
+  width: auto;
+}
+
+
+.firstUl,
+.secondUl{
+  width: 10vw;
+  height: 10vw;
+}
+
 
 .hide{
   display: none;
 }
 
 .show{
-  display: flex !important;
-}
-
-ul a{
-  padding: 0px;
-}
-
-li img{
-  height: 18vh;
-  width: auto;
-}
-
-ul li ul li{
-    float: right;
-    border-style: inset;
+  display: block !important;
 }
 
 

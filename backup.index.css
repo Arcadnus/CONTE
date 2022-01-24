@@ -1,0 +1,37 @@
+
+
+.firstLi{ 
+  vertical-align: bottom;
+  right: 1vw;
+}
+
+.secondLi{
+  display: none;
+  float: right;
+}
+
+.firstUl{
+  position: absolute !important;
+  z-index: 999;
+  margin-bottom: 3vh;
+  margin-left: 2vh;
+  height: 10vw;
+  width: 36vw;
+}
+
+.secondUl{ 
+  height: 20vh;
+  width: 20vh;
+  text-align: center;
+  background-color: lightgrey;
+  border-radius: 20px;
+}
+
+li ul li ul{
+    float: right;
+    border-style: inset;
+}
+
+li a{
+  padding: 0px;
+}
