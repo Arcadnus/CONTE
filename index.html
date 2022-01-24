@@ -1,103 +1,51 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Device Properties Example</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="css/index.css">
+  <title>Conte - Home</title>
 
-    <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
-    <script type="text/javascript" charset="utf-8">
+</head>
+<body class="gray" id="bodyy">
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAhjQ3jcnWyE6Hcq__AbkJvdjKKaJzmWhE",
+      authDomain: "teste-2-de-projetos.firebaseapp.com",
+      databaseURL: "https://teste-2-de-projetos.firebaseio.com",
+      projectId: "teste-2-de-projetos",
+      storageBucket: "teste-2-de-projetos.appspot.com"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+ 
+  <!-- Compiled and minified JavaScript -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/index.js"></script>
 
-    document.getElementById("botaoGravar").addEventListener("click", onDeviceReady);
-   
-    // Record audio
-    // 
-    function recordAudio() {
-        var src = "/myrecording.mp3";
-        document.getElementById('alert').innerHTML = "botão apertado! 2 passo";
-
-        var mediaRec = new Media(
-
-          src,
-            // success callback
-          
-            function() {
-                document.getElementById('alert').innerHTML = "recordAudio():Audio Success";
-            },
-
-            // error callback
-            function(err) {
-                document.getElementById('alert').innerHTML = "recordAudio():Audio Error: "+ err.code;
-            }, 
-
-            // status callback
-            function (status) {
-                document.getElementById('alert').innerHTML = "recordAudio(): Audio status:" + status;
-            });
-
-        document.getElementById('alert2').innerHTML = "midia criada"; //criar midia
-
-    // PhoneGap is ready
-
-        // Record audio
-        mediaRec.startRecord();
-    }
-    //
-    function onDeviceReady() {
-
-        document.getElementById('alert').innerHTML = "botão apertado! 1 passo";
-        recordAudio();
-    }
-
-    // onSuccess Callback
-    //
-    function onSuccess() {
-        document.getElementById('alert').innerHTML = "recordAudio():Audio Success";
-    }
-
-    // onError Callback 
-    //
-    function onError(error) {
-        document.getElementById('alert').innerHTML = 'code: ' + error.code    + '<br>' + 
-              'message: ' + error.message + '<br>';
-    }
-
-    // Set audio position
-    // 
-    function setAudioPosition(position) {
-        document.getElementById('audio_position').innerHTML = position;
-    }
-
-    // Play audio
-    //
-    function playAudio(url) {
-        // Play the audio file at url
-        var my_media = new Media(url,
-            // success callback
-            function() {
-                document.getElementById('alert').innerHTML = "playAudio():Audio Success";
-            },
-            // error callback
-            function(err) {
-                document.getElementById('alert').innerHTML = "playAudio():Audio Error: "+err;
-            }
-        );
-
-        // Play audio
-        my_media.play();
-
-        // Pause after 10 seconds
-        setTimeout(function() {
-            my_media.stop();
-        }, 10000);
-    }
-
-    </script>
-  </head>
-  <body>
-    <p id="media">Gravar ver1 audio...</p>
-    <p id="alert"></p>
-    <p id="alert2"></p>
-    <p id="msgDisplay"></p>
-    <p id="audio_position"></p>
-    <button id="botaoGravar">Gravar</button>
-  </body>
+<div class="container">
+    <div class="logoContainer">
+        <img src="img/logo.png">
+    </div>
+    <form action="index3.html">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="pass" placeholder="Senha">
+        <button type="submit" id="registerBtn" class="registerBtn orange whiteTxt">Ir para o Editor!</button>
+    </form>
+    <button onclick="nextBg();">Próxima imagem de fundo!</button>
+    <button onclick="prevBg();">Anterior imagem de fundo!</button>
+    <p id="msg">Exibindo imagem numero: 1</p>
+</div>
+<div class="allignBottom registerTag">Ou <a href="register.html">Registra</a> Com e-mail</div>
+<script src="js/trocaFundo.js"></script>
+</body>
 </html>

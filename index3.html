@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="css/materialize.min.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/editor.css">
   <title>Editor</title>
 
   <!-- fabric.js -->
@@ -15,48 +15,89 @@
   <script src="js/FileSaver.min.js"></script>
   
 </head>
-<body class="grey lighten-3">
+<body class="lighten-3">
 
-	<li id="nav-mobile" class="firstLi right">
-		<ul class="firstUl" id="1" onclick="opentab(this.id)">
+  <button class="clearAll backBtn" onclick="goBack();">
+    <img src="img/icones/icones-15.png" onclick="goBack();">
+  </button>
+
+  <div class="topEditor">
+    <div class="topBtn myBtn">
+      <!-- icone --> 
+      <img src="img/icones/icones-12.png">
+    </div>
+    <div class="topBtn myBtn">
+      <!-- icone -->
+      <img src="img/icones/icones-14.png">
+    </div>
+  </div>
+
+  <!-- botôes do editor -->
+	<li id="nav-mobile carousel" class="firstLi right">
+		<ul class="firstUl carousel-item gray myBtn" id="1" onclick="opentab(this.id)">
 			<li class="secondLi" id="tab1">
-        <ul class="secondUl" id="insertImage1">
-          <img src="img/stickers/sticker_001.png">
+        <!-- sticker 1 -->
+        <ul class="secondUl" id="1" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_1.png">
         </ul>
-        <ul class="secondUl" id="insertImage2">
-          <img src="img/stickers/sticker_002.png">
+        <!-- sticker 2 -->
+        <ul class="secondUl" id="2" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_2.png">
         </ul>
-        <ul class="secondUl" id="insertImage3">
-          <img src="img/stickers/sticker_003.png">
+        <!-- sticker 3 -->
+        <ul class="secondUl" id="3" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_3.png">
         </ul>
-        <ul class="secondUl" id="insertImage4">
-          <img src="img/stickers/sticker_004.png">
+        <!-- sticker 4 -->
+        <ul class="secondUl" id="4" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_4.png">
         </ul>
-        <ul class="secondUl">
-          <img src="img/stickers/sticker_004.png">
+        <!-- sticker 5 -->
+        <ul class="secondUl" id="5" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_5.png">
         </ul>
-        <ul class="secondUl">
-          <img src="img/stickers/sticker_004.png">
+        <!-- sticker 6 -->
+        <ul class="secondUl" id="6" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_6.png">
         </ul>
-        <ul class="secondUl">
-          <img src="img/stickers/sticker_004.png">
+        <!-- sticker 7 -->
+        <ul class="secondUl" id="7" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_7.png">
         </ul>
-        <ul class="secondUl">
-          <img src="img/stickers/sticker_004.png">
+        <!-- sticker 8 -->
+        <ul class="secondUl" id="8" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_8.png">
         </ul>
-        <ul class="secondUl">
-          <img src="img/stickers/sticker_004.png">
+        <!-- sticker 9 -->
+        <ul class="secondUl" id="9" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_9.png">
         </ul>
-        <ul class="secondUl">
-          <img src="img/stickers/sticker_004.png">
+        <!-- sticker 10 -->
+        <ul class="secondUl" id="10" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_10.png">
         </ul>
-        <ul class="secondUl">
-          <img src="img/stickers/sticker_004.png">
+        <!-- sticker 11 -->
+        <ul class="secondUl" id="11" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_11.png">
         </ul>
+        <!-- sticker 12 -->
+        <ul class="secondUl" id="11" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_12.png">
+        </ul>
+        <!-- sticker 13 -->
+        <ul class="secondUl" id="11" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_13.png">
+        </ul>
+        <!-- sticker 14 -->
+        <ul class="secondUl" id="11" onclick="putImage(this.id)">
+          <img src="img/stickers/sticker_14.png">
+        </ul>
+        <!-- and so on... -->
       </li>
-        <img id="imgBtn1" src="img/logo.png">
+        <img id="imgBtn1"src="img/icones/icones-10.png">
+        <!-- <img id="imgBtn1" src="img/logo.png"> -->
 		</ul>
-    <ul class="firstUl" id="2" onclick="opentab(this.id)">
+    <ul class="firstUl carousel-item gray myBtn" id="2" onclick="opentab(this.id)">
       <li class="secondLi" id="tab2">
         <ul class="secondUl red" id="bgRed">
         </ul>
@@ -69,46 +110,73 @@
         <ul class="secondUl colors">
         </ul>
       </li>
-        <div class="colors2"></div>
+        <img id="imgBtn2" src="img/icones/icones-11.png">
     </ul>
-    <ul class="firstUl" id="3" onclick="opentab(this.id)">
+    <ul class="firstUl carousel-item gray myBtn" id="3" onclick="opentab(this.id)">
       <li class="secondLi" id="tab3">
-        <ul class="secondUl">
+        <ul class="secondUl bgDisplayers" id="1" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_1.jpg">
         </ul>
-        <ul class="secondUl">
+        <ul class="secondUl bgDisplayers" id="2" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_2.jpg">
         </ul>
-        <ul class="secondUl">
+        <ul class="secondUl bgDisplayers" id="3" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_3.jpg">
         </ul>
-        <ul class="secondUl">
+        <!-- <ul class="secondUl bgDisplayers" id="4" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_4.jpg">
         </ul>
-        <ul class="secondUl">
+        <ul class="secondUl bgDisplayers" id="5" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_5.jpg">
         </ul>
+        <ul class="secondUl bgDisplayers" id="6" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_6.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="7" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_7.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="8" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_8.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="9" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_9.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="10" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_10.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="11" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_11.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="12" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_12.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="13" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_13.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="14" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_14.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="15" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_15.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="16" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_16.jpg">
+        </ul>
+        <ul class="secondUl bgDisplayers" id="17" onclick="change_bg(this.id);">
+          <img src="img/editor_bg/img_17.jpg">
+        </ul> -->
       </li>
-        <div class=""></div>
-    </ul>
-    <ul class="firstUl" id="4" onclick="opentab(this.id)">
-      <li class="secondLi" id="tab4">
-        <ul class="secondUl">
-        </ul>
-        <ul class="secondUl">
-        </ul>
-        <ul class="secondUl">
-        </ul>
-        <ul class="secondUl">
-        </ul>
-        <ul class="secondUl">
-        </ul>
-      </li>
-        <div class=""></div>
+        <img id="imgBtn3" src="img/icones/icones-17.png">
     </ul>
 	</li>
 
   <!-- testes com o Fabric.js -->
   <canvas id="canvaassss"></canvas>
-  <progress value="0" max="100" id="uploader"></progress>
-  <!-- <button class="button" id="insertImage">Inserir Nova Imagem!</button> -->
+
+  <!-- ENVIO DO CANVAS AO BANCO DE DADOS FIREBASE -->
+  <!-- <progress value="0" max="100" id="uploader"></progress>
   <p id="uploadResult"></p>
-  <button id="saveImage">Salvar minha imagem no banco de dados!</button>
+  <button id="saveImage">Salvar minha imagem no banco de dados!</button> -->
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
@@ -141,9 +209,9 @@
       (function() {
         var
         // Obtain a reference to the canvas element using its id.
-        htmlCanvas = document.getElementById('canvaassss'),
+        canvas = document.getElementById('canvaassss'),
         // Obtain a graphics context on the canvas element for drawing.
-        context = htmlCanvas.getContext('2d');
+        context = canvas.getContext('2d');
 
         // Start listening to resize events and draw canvas.
         initialize();
@@ -168,8 +236,8 @@
         // Resets the canvas dimensions to match window,
         // then draws the new borders accordingly.
         function resizeCanvas() {
-            htmlCanvas.width = window.innerWidth;
-            htmlCanvas.height = window.innerHeight;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
             redraw();
         }
         })();
@@ -182,48 +250,65 @@
       //cornerSize: 39
       //no arquivo js/fabric.min.js
 
-    //CRIAÇÃO DE IMAGENS/STIICKERS
+
+      /*
+    // !!!!!!!!!!!!!ANTIGA!!!!!!!!!!!!!
+      //CRIAÇÃO DE IMAGENS/STIICKERS 
+        var imgCount = 0 ;
+
+        //BOTÃO PARA CRIAR STICKERS 1
+          $("#insertImage1").click(function() {
+            imgCount++;
+            imgfishID = "imgfish"+imgCount;
+            fabric.Image.fromURL('img/stickers/sticker_001.png',function (imgfishID) {
+              canvas.add(imgfishID);
+            });
+            // console.log("added"+imgCount+"images to the canvas!")
+          });
+
+        //BOTÃO PARA CRIAR STICKERS 2
+          $("#insertImage2").click(function() {
+            imgCount++;
+            imgfishID = "imgfish"+imgCount;
+            fabric.Image.fromURL('img/stickers/sticker_002.png',function (imgfishID) {
+              canvas.add(imgfishID);
+            });
+            // console.log("added"+imgCount+"images to the canvas!")
+          });
+
+        //BOTÃO PARA CRIAR STICKERS 3
+          $("#insertImage3").click(function() {
+            imgCount++;
+            imgfishID = "imgfish"+imgCount;
+            fabric.Image.fromURL('img/stickers/sticker_003.png',function (imgfishID) {
+              canvas.add(imgfishID);
+            });
+            // console.log("added"+imgCount+"images to the canvas!")
+          });
+
+        //BOTÃO PARA CRIAR STICKERS 4
+          $("#insertImage4").click(function() {
+            imgCount++;
+            imgfishID = "imgfish"+imgCount;
+            fabric.Image.fromURL('img/stickers/sticker_004.png',function (imgfishID) {
+              canvas.add(imgfishID);
+            });
+            // console.log("added"+imgCount+"images to the canvas!")
+          });
+
+          */
+
+    //NOVO INSERSÃO DE IMAGENS
       var imgCount = 0 ;
-
-      //BOTÃO PARA CRIAR STICKERS 1
-        $("#insertImage1").click(function() {
-          imgCount++;
-          imgfishID = "imgfish"+imgCount;
-          fabric.Image.fromURL('img/stickers/sticker_001.png',function (imgfishID) {
-            canvas.add(imgfishID);
-          });
-          // console.log("added"+imgCount+"images to the canvas!")
+      function putImage(ids) {
+        imgCount++;
+        stickerID = "canvasSticker"+imgCount;
+        fabric.Image.fromURL('img/stickers/sticker_'+ids+'.png',function (imgfishID) {
+          canvas.add(imgfishID);
         });
-
-      //BOTÃO PARA CRIAR STICKERS 2
-        $("#insertImage2").click(function() {
-          imgCount++;
-          imgfishID = "imgfish"+imgCount;
-          fabric.Image.fromURL('img/stickers/sticker_002.png',function (imgfishID) {
-            canvas.add(imgfishID);
-          });
-          // console.log("added"+imgCount+"images to the canvas!")
-        });
-
-      //BOTÃO PARA CRIAR STICKERS 3
-        $("#insertImage3").click(function() {
-          imgCount++;
-          imgfishID = "imgfish"+imgCount;
-          fabric.Image.fromURL('img/stickers/sticker_003.png',function (imgfishID) {
-            canvas.add(imgfishID);
-          });
-          // console.log("added"+imgCount+"images to the canvas!")
-        });
-
-      //BOTÃO PARA CRIAR STICKERS 4
-        $("#insertImage4").click(function() {
-          imgCount++;
-          imgfishID = "imgfish"+imgCount;
-          fabric.Image.fromURL('img/stickers/sticker_004.png',function (imgfishID) {
-            canvas.add(imgfishID);
-          });
-          // console.log("added"+imgCount+"images to the canvas!")
-        });
+        console.log("added "+imgCount+" images to the canvas!");
+        console.log("The image is: sticker_"+ids+".png");
+      }
 
     //SALVAR CANVAS INTEIRO COMO IMAGEM PNG
       var saveCount = 0;
@@ -233,25 +318,25 @@
         saveCount ++;
         //turn canvas into blob image
         $("#canvaassss").get(0).toBlob(function(blob) {
-        //saveAs(blob, "img/canvas/nome.png"); //salvar imagem em pasta local
-        //create a storage Reference 
-        var storageRef = firebase.storage().ref('editor_output/img'+saveCount+'.png');
-        //send arquive(blob)
-        var task = storageRef.put(blob);
-        //update progress bar
-        task.on('state_changed',
-          function progress(snapshot) {
-            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-            uploader.value = percentage;
-          },
+          //saveAs(blob, "img/canvas/nome.png"); //salvar imagem em pasta local
+          //create a storage Reference 
+          var storageRef = firebase.storage().ref('editor_output/img'+saveCount+'.png');
+          //send arquive(blob)
+          var task = storageRef.put(blob);
+          //update progress bar
+          task.on('state_changed',
+            function progress(snapshot) {
+              var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+              uploader.value = percentage;
+            },
 
-          function error(err) {
-            
-          },
+            function error(err) {
+              
+            },
 
-          function complete() {
-            document.getElementById('uploadResult').innerHTML = "Imagem Enviada!";
-          }
+            function complete() {
+              document.getElementById('uploadResult').innerHTML = "Imagem Enviada!";
+            }
 
           );
 
@@ -259,6 +344,7 @@
       });
 
     //MUDAR COR DE FUNDO
+      /*
       $("#bgRed").click(function() {
         canvas.backgroundColor = 'rgba(244, 67, 54, 1)';
         canvas.renderAll();
@@ -282,48 +368,58 @@
         canvas.renderAll();
         this.__canvases.push(canvas);
       });
+      */
+
+    //MUDAR IMAGEM DE FUNDO
+      
+
+    /*canvas.setBackgroundImage('img/editor_bg/img_1.jpg', canvas.renderAll.bind(canvas), {
+        //original:
+        // scaleX: canvas.width / img.width,
+        // scaleY: canvas.height / img.height
+        scaleX: canvas.width / 4000,
+        scaleY: canvas.width / 4000
+      });*/
+
+
+      function change_bg(imageNumber) {
+
+        if (imageNumber==1) {         
+          canvas.setBackgroundImage("img/editor_bg/img_"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+          scaleX: canvas.width / 4000,
+          scaleY: canvas.height / 3000
+          });
+ 
+        }else if(imageNumber==2){
+          canvas.setBackgroundImage("img/editor_bg/img_"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+          scaleX: canvas.width / 4000,
+          scaleY: canvas.width / 4000
+          });
+ 
+        }else if(imageNumber==3){
+          canvas.setBackgroundImage("img/editor_bg/img_"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+          scaleX: canvas.height / 3000,
+          scaleY: canvas.height / 3000
+          });
+ 
+        }
+
+
+
+  
+      };
+
 
     //ABRIR AS ABAS DO MENU
       function opentab(num) {
         console.log("clicked!")
-        $("#tab"+num).toggleClass("show");
-        $("#imgBtn"+num).toggle();
+        $("#tab"+num).toggleClass("show"+num);
+        $("#"+num).toggleClass("btnOpened");
       };
 
-    //EXPANDE OBJETOS AO ARRASTAR
-
-      /*function animate(e, dir) {
-        if (e.target) {
-          fabric.util.animate({
-            startValue: e.target.get('angle'),
-            endValue: e.target.get('angle') + (dir ? 10 : -10),
-            duration: 100,
-            onChange: function(value) {
-              e.target.setAngle(value);
-              canvas.renderAll();
-            },
-            onComplete: function() {
-              e.target.setCoords();
-            }
-          });
-          fabric.util.animate({
-            startValue: e.target.get('scaleX'),
-            endValue: e.target.get('scaleX') + (dir ? 0.2 : -0.2),
-            duration: 100,
-            onChange: function(value) {
-              e.target.scale(value);
-              canvas.renderAll();
-            },
-            onComplete: function() {
-              e.target.setCoords();
-            }
-          });
-        }
+      function goBack() {
+        history.back();
       }
-      canvas.on('mouse:down', function(e) { animate(e, 1); });
-      canvas.on('mouse:up', function(e) { animate(e, 0); });
-      this.__canvases.push(canvas);*/
-
   </script>
 
 </body>
