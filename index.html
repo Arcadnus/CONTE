@@ -14,6 +14,28 @@
   <script src="js/FileSaver.min.js"></script>
 
   <title>GameGuidez</title>
+  <style>
+    #canvaassss,
+    .upper-canvas,
+    .canvas-container{
+      width:90vw !important;
+      height:90vh !important;
+    }
+    .canvas-container{
+      left:5vw !important;
+      /*top:5vh !important;*/
+    }
+    .upper-canvas{
+      border-style: dotted;
+    }
+
+    ul{ 
+      position: absolute !important;
+      z-index: 999;
+    }
+  </style>
+
+
 </head>
 <body class="grey lighten-3">
 
@@ -23,7 +45,8 @@
       <a href="#" class="brand-logo">
         <img src="img/maplestory_logo.png" style="width: 124px; margin-top: 5px;">
       </a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <ul id="nav-mobile" class="right ">
+        <!-- class -> hide-on-med-and-down -->
           <li class="logged-in">
             <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
           </li>
@@ -38,6 +61,9 @@
           </li>
           <li class="logged-out">
             <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+          </li>
+          <li class="logged-out">
+            <a href="index3.html" class="grey-text">Editor</a>
           </li>
       </ul>
     </div>
@@ -63,19 +89,19 @@
       <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
     </li>
     <li class="logged-out">
-      <a href="index2.html" class="grey-text">Página Logado</a>
+      <a href="index3.html" class="grey-text">Editor</a>
     </li>
+    <!-- <li class="logged-out">
+      <a href="index2.html" class="grey-text">Página Logado</a>
+    </li> -->
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"></i></a>
 
   <!-- testes com o banco de dados -->
-  <h1 id="bigOne"></h1>
-
-
-
+  <!-- <h1 id="bigOne"></h1> -->
 
   <!-- testes com o Fabric.js -->
-  <canvas id="canvaassss" width="800" height="600"></canvas>
+  <canvas id="canvaassss"></canvas>
   <progress value="0" max="100" id="uploader"></progress>
   <button id="insertImage">Inserir Nova Imagem!</button>
   <button id="saveImage">Salvar minha imagem no banco de dados!</button>
@@ -184,9 +210,9 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
-    var bigOne = document.getElementById('bigOne');
-    var dbRef = firebase.database().ref().child('text');
-    dbRef.on('value', snap => bigOne.innerText=snap.val());
+    // var bigOne = document.getElementById('bigOne');
+    // var dbRef = firebase.database().ref().child('text');
+    // dbRef.on('value', snap => bigOne.innerText=snap.val());
 
   </script>
 
@@ -198,8 +224,6 @@
   <script>
     var elem = document.querySelector('.sidenav');
     var instance = new M.Sidenav(elem);
-   
-
   </script>
   <script src="js/auth.js"></script>
   <script src="js/index.js"></script>
@@ -228,7 +252,7 @@
       fabric.Image.fromURL('img/logo.png',function (imgfishID) {
         canvas.add(imgfishID);
       });
-      console.log("added"+imgCount+"images to the canvas!")
+      // console.log("added"+imgCount+"images to the canvas!")
     });
 
     //salvar canvas inteiro como imagem png
@@ -239,34 +263,28 @@
       saveCount ++;
       //turn canvas into blob image
       $("#canvaassss").get(0).toBlob(function(blob) {
-      //saveAs(blob, "img/canvas/nome.png"); //salvar imagem em pasta local
-      //create a storage Reference 
-      var storageRef = firebase.storage().ref('editor_output/img'+saveCount+'.png');
-      //send arquive(blob)
-      var task = storageRef.put(blob);
-      //update progress bar
-      task.on('state_changed',
-        function progress(snapshot) {
-          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-          uploader.value = percentage;
-        },
-
-        function error(err) {
-          
-        },
-
-        function complete() {
-          
-        }
-
-
+        //saveAs(blob, "img/canvas/nome.png"); //salvar imagem em pasta local
+        //create a storage Reference 
+        var storageRef = firebase.storage().ref('editor_output/img'+saveCount+'.png');
+        //send arquive(blob)
+        var task = storageRef.put(blob);
+        //update progress bar
+        task.on('state_changed',
+          function progress(snapshot) {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+            uploader.value = percentage;
+          },
+          function error(err) {
+            
+          },
+          function complete() {
+            
+          }
         );
-
       });
     });
 
   </script>
-
 
 </body>
 </html>

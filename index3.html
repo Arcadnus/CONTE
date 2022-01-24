@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="css/materialize.min.css">
+  <link rel="stylesheet" href="css/index.css">
+  <title>Editor</title>
+  <style>
+
+
+
+  </style>
+
+  <!-- fabric.js -->
+  <script src="js/fabric.min.js"></script>
+  <script src="js/canvas-toBlob.js"></script>
+  <script src="js/FileSaver.min.js"></script>
+
+
+</head>
+<body class="grey lighten-3">
+
+	<ul id="nav-mobile" class="firstUl right">
+		<li class="firstLi" id="1" onclick="opentab(this.id)">
+			<ul class="secondUl" id="tab1">
+        <li class="secondLi" id="insertImage1">
+          <img src="img/stickers/sticker_001.png">
+        </li>
+        <li class="secondLi" id="insertImage2">
+          <img src="img/stickers/sticker_002.png">
+        </li>
+        <li class="secondLi" id="insertImage3">
+          <img src="img/stickers/sticker_003.png">
+        </li>
+        <li class="secondLi" id="insertImage4">
+        <img src="img/stickers/sticker_004.png">
+        </li>
+        <li class="secondLi">
+          <img src="img/logo.png">
+        </li>
+      </ul>
+        <img id="imgBtn1" src="img/logo.png">
+		</li>
+    <li class="firstLi" id="2" onclick="opentab(this.id)">
+      <ul class="secondUl" id="tab2">
+        <li class="secondLi red" id="bgRed">
+        </li>
+        <li class="secondLi blue" id="bgBlue">
+        </li>
+        <li class="secondLi green" id="bgGreen">
+        </li>
+        <li class="secondLi yellow" id="bgYellow">
+        </li>
+        <li class="secondLi colors">
+        </li>
+      </ul>
+        <div class="colors2"></div>
+    </li>
+    <li class="firstLi" id="3" onclick="opentab(this.id)">
+      <ul class="secondUl" id="tab3">
+        <li class="secondLi">
+        </li>
+        <li class="secondLi">
+        </li>
+        <li class="secondLi">
+        </li>
+        <li class="secondLi">
+        </li>
+        <li class="secondLi">
+        </li>
+      </ul>
+        <div class=""></div>
+    </li>
+    <li class="firstLi" id="4" onclick="opentab(this.id)">
+      <ul class="secondUl" id="tab4">
+        <li class="secondLi">
+        </li>
+        <li class="secondLi">
+        </li>
+        <li class="secondLi">
+        </li>
+        <li class="secondLi">
+        </li>
+        <li class="secondLi">
+        </li>
+      </ul>
+        <div class=""></div>
+    </li>
+
+	</ul>
+
+  <!-- testes com o Fabric.js -->
+  <canvas id="canvaassss"></canvas>
+  <progress value="0" max="100" id="uploader"></progress>
+  <!-- <button class="button" id="insertImage">Inserir Nova Imagem!</button> -->
+  <p id="uploadResult"></p>
+  <button id="saveImage">Salvar minha imagem no banco de dados!</button>
+
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAhjQ3jcnWyE6Hcq__AbkJvdjKKaJzmWhE",
+      authDomain: "teste-2-de-projetos.firebaseapp.com",
+      databaseURL: "https://teste-2-de-projetos.firebaseio.com",
+      projectId: "teste-2-de-projetos",
+      storageBucket: "teste-2-de-projetos.appspot.com"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+  </script>
+  <!-- Minified script for opening and closing of html components -->
+  <script src="js/materialize.min.js"></script>
+ 
+  <!-- Compiled and minified JavaScript -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/index.js"></script>
+
+  <script>
+
+    //REDIMENSIONAR O CANVAS PARA ENCAIXAR NA TELA
+      (function() {
+        var
+        // Obtain a reference to the canvas element using its id.
+        htmlCanvas = document.getElementById('canvaassss'),
+        // Obtain a graphics context on the canvas element for drawing.
+        context = htmlCanvas.getContext('2d');
+
+        // Start listening to resize events and draw canvas.
+        initialize();
+
+        function initialize() {
+           // Register an event listener to call the resizeCanvas() function 
+           // each time the window is resized.
+           window.addEventListener('resize', resizeCanvas, false);
+           // Draw canvas border for the first time.
+           resizeCanvas();
+        }
+
+        // Display custom canvas. In this case it's a blue, 5 pixel 
+        // border that resizes along with the browser window.
+        function redraw() {
+           context.strokeStyle = 'blue';
+           context.lineWidth = '5';
+           context.strokeRect(0, 0, window.innerWidth, window.innerHeight);
+        }
+
+        // Runs each time the DOM window resize event fires.
+        // Resets the canvas dimensions to match window,
+        // then draws the new borders accordingly.
+        function resizeCanvas() {
+            htmlCanvas.width = window.innerWidth;
+            htmlCanvas.height = window.innerHeight;
+            redraw();
+        }
+        })();
+
+    //CRIAR CANVAS
+      var canvas = new fabric.Canvas('canvaassss');
+
+    //BORDAS E CONTROLES DO OBJETO CUSTOMIZADAS
+      //procurar por 
+      //cornerSize: 39
+      //no arquivo js/fabric.min.js
+
+    //CRIAÇÃO DE IMAGENS/STIICKERS
+      var imgCount = 0 ;
+
+      //BOTÃO PARA CRIAR STICKERS 1
+        $("#insertImage1").click(function() {
+          imgCount++;
+          imgfishID = "imgfish"+imgCount;
+          fabric.Image.fromURL('img/stickers/sticker_001.png',function (imgfishID) {
+            canvas.add(imgfishID);
+          });
+          // console.log("added"+imgCount+"images to the canvas!")
+        });
+
+      //BOTÃO PARA CRIAR STICKERS 2
+        $("#insertImage2").click(function() {
+          imgCount++;
+          imgfishID = "imgfish"+imgCount;
+          fabric.Image.fromURL('img/stickers/sticker_002.png',function (imgfishID) {
+            canvas.add(imgfishID);
+          });
+          // console.log("added"+imgCount+"images to the canvas!")
+        });
+
+      //BOTÃO PARA CRIAR STICKERS 3
+        $("#insertImage3").click(function() {
+          imgCount++;
+          imgfishID = "imgfish"+imgCount;
+          fabric.Image.fromURL('img/stickers/sticker_003.png',function (imgfishID) {
+            canvas.add(imgfishID);
+          });
+          // console.log("added"+imgCount+"images to the canvas!")
+        });
+
+      //BOTÃO PARA CRIAR STICKERS 4
+        $("#insertImage4").click(function() {
+          imgCount++;
+          imgfishID = "imgfish"+imgCount;
+          fabric.Image.fromURL('img/stickers/sticker_004.png',function (imgfishID) {
+            canvas.add(imgfishID);
+          });
+          // console.log("added"+imgCount+"images to the canvas!")
+        });
+
+    //SALVAR CANVAS INTEIRO COMO IMAGEM PNG
+      var saveCount = 0;
+      var uploader = document.getElementById('uploader');
+      $("#saveImage").click(function () {
+        //ammount of times saved
+        saveCount ++;
+        //turn canvas into blob image
+        $("#canvaassss").get(0).toBlob(function(blob) {
+        //saveAs(blob, "img/canvas/nome.png"); //salvar imagem em pasta local
+        //create a storage Reference 
+        var storageRef = firebase.storage().ref('editor_output/img'+saveCount+'.png');
+        //send arquive(blob)
+        var task = storageRef.put(blob);
+        //update progress bar
+        task.on('state_changed',
+          function progress(snapshot) {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+            uploader.value = percentage;
+          },
+
+          function error(err) {
+            
+          },
+
+          function complete() {
+            document.getElementById('uploadResult').innerHTML = "Imagem Enviada!";
+          }
+
+          );
+
+        });
+      });
+
+    //MUDAR COR DE FUNDO
+      $("#bgRed").click(function() {
+        canvas.backgroundColor = 'rgba(244, 67, 54, 1)';
+        canvas.renderAll();
+        this.__canvases.push(canvas);
+      });
+    
+      $("#bgBlue").click(function() {
+        canvas.backgroundColor = 'rgba(33, 150, 243, 1)';
+        canvas.renderAll();
+        this.__canvases.push(canvas);
+      });
+    
+      $("#bgGreen").click(function() {
+        canvas.backgroundColor = 'rgba(55, 235, 59, 1)';
+        canvas.renderAll();
+        this.__canvases.push(canvas);
+      });
+    
+      $("#bgYellow").click(function() {
+        canvas.backgroundColor = 'rgba(255, 235, 59, 1)';
+        canvas.renderAll();
+        this.__canvases.push(canvas);
+      });
+
+    //ABRIR AS ABAS DO MENU
+      function opentab(num) {
+        console.log("clicked!")
+        $("#tab"+num).toggleClass("show");
+        $("#imgBtn"+num).toggle();
+      };
+
+    //EXPANDE OBJETOS AO ARRASTAR
+
+  </script>
+
+</body>
+</html>
