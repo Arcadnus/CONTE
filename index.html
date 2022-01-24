@@ -1,294 +1,103 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="css/materialize.min.css">
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Device Properties Example</title>
 
-  <!-- fabric.js -->
-  <script src="js/fabric.min.js"></script>
-  <script src="js/canvas-toBlob.js"></script>
-  <script src="js/FileSaver.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
 
-  <title>Página Inicial</title>
-  <style>
-    #canvaassss,
-    .upper-canvas,
-    .canvas-container{
-      width:90vw !important;
-      height:90vh !important;
+    document.getElementById("botaoGravar").addEventListener("click", onDeviceReady);
+   
+    // Record audio
+    // 
+    function recordAudio() {
+        var src = "/myrecording.mp3";
+        document.getElementById('alert').innerHTML = "botão apertado! 2 passo";
+
+        var mediaRec = new Media(
+
+          src,
+            // success callback
+          
+            function() {
+                document.getElementById('alert').innerHTML = "recordAudio():Audio Success";
+            },
+
+            // error callback
+            function(err) {
+                document.getElementById('alert').innerHTML = "recordAudio():Audio Error: "+ err.code;
+            }, 
+
+            // status callback
+            function (status) {
+                document.getElementById('alert').innerHTML = "recordAudio(): Audio status:" + status;
+            });
+
+        document.getElementById('alert2').innerHTML = "midia criada"; //criar midia
+
+    // PhoneGap is ready
+
+        // Record audio
+        mediaRec.startRecord();
     }
-    .canvas-container{
-      left:5vw !important;
-      /*top:5vh !important;*/
+    //
+    function onDeviceReady() {
+
+        document.getElementById('alert').innerHTML = "botão apertado! 1 passo";
+        recordAudio();
     }
-    .upper-canvas{
-      border-style: dotted;
+
+    // onSuccess Callback
+    //
+    function onSuccess() {
+        document.getElementById('alert').innerHTML = "recordAudio():Audio Success";
     }
 
-    ul{ 
-      position: absolute !important;
-      z-index: 999;
+    // onError Callback 
+    //
+    function onError(error) {
+        document.getElementById('alert').innerHTML = 'code: ' + error.code    + '<br>' + 
+              'message: ' + error.message + '<br>';
     }
-  </style>
 
+    // Set audio position
+    // 
+    function setAudioPosition(position) {
+        document.getElementById('audio_position').innerHTML = position;
+    }
 
-</head>
-<body class="grey lighten-3">
-
-  <!-- NAVBAR -->
-  <nav class="z-depth-0 grey lighten-4">
-    <div class="nav-wrapper container">
-      <a href="#" class="brand-logo">
-        <img src="img/maplestory_logo.png" style="width: 124px; margin-top: 5px;">
-      </a>
-      <ul id="nav-mobile" class="right ">
-        <!-- class -> hide-on-med-and-down -->
-          <li class="logged-in">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
-          </li>
-          <li class="logged-in">
-            <a href="#" class="grey-text" id="logout">Logout</a>
-          </li>
-          <li class="logged-in">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
-          </li>
-          <li class="logged-out">
-            <a href="micTest.html" class="grey-text">Microphones</a>
-          </li>
-          <li class="logged-out">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
-          </li>
-          <li class="logged-out">
-            <a href="index3.html" class="grey-text">Editor</a>
-          </li>
-          <li class="logged-out">
-            <a href="downloadImages.html" class="grey-text">Listar Histórias</a>
-          </li>
-      </ul>
-    </div>
-  </nav>
-
-
-
-  <!-- sidenav for mobile -->
-  <ul id="slide-out" class="sidenav">
-    <li class="logged-in">
-      <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
-    </li>
-    <li class="logged-in">
-      <a href="#" class="grey-text" id="logout">Logout</a>
-    </li>
-    <li class="logged-in">
-      <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
-    </li>
-    <li class="logged-out">
-      <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
-    </li>
-    <li class="logged-out">
-      <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
-    </li>
-    <li class="logged-out">
-      <a href="index3.html" class="grey-text">Editor</a>
-    </li>
-    <li class="logged-out">
-      <a href="downloadImages.html" class="grey-text">Listar Histórias</a>
-    </li>
-  </ul>
-  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"></i></a>
-
-  <!-- testes com o banco de dados -->
-  <!-- <h1 id="bigOne"></h1> -->
-
-  <!-- testes com o Fabric.js -->
-  <canvas id="canvaassss"></canvas>
-  <progress value="0" max="100" id="uploader"></progress>
-  <button id="insertImage">Inserir Nova Imagem!</button>
-  <button id="saveImage">Salvar minha imagem no banco de dados!</button>
-
-
-
-  <!-- SIGN UP MODAL -->
-  <div id="modal-signup" class="modal">
-    <div class="modal-content">
-      <h4>Sign up</h4><br />
-      <form id="signup-form">
-        <div class="input-field">
-          <input type="email" id="signup-email" required />
-          <label for="signup-email">Email address</label>
-        </div>
-        <div class="input-field">
-          <input type="password" id="signup-password" required />
-          <label for="signup-password">Choose password</label>
-        </div>
-        <button class="btn yellow darken-2 z-depth-0">Sign up</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- LOGIN MODAL -->
-  <div id="modal-login" class="modal">
-    <div class="modal-content">
-      <h4>Login</h4><br />
-      <form id="login-form">
-        <div class="input-field">
-          <input type="email" id="login-email" required />
-          <label for="login-email">Email address</label>
-        </div>
-        <div class="input-field">
-          <input type="password" id="login-password" required />
-          <label for="login-password">Your password</label>
-        </div>
-        <button class="btn yellow darken-2 z-depth-0">Login</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ACCOUNT MODAL -->
-  <div id="modal-account" class="modal">
-    <div class="modal-content center-align">
-      <h4>Account details</h4><br />
-      <div class="account-details"></div>
-    </div>
-  </div>
-
-  <!-- CREATE GUIDE MODAL -->
-  <div id="modal-create" class="modal">
-    <div class="modal-content">
-      <h4>Create Guide</h4><br />
-      <form id="create-form">
-        <div class="input-field">
-          <input type="text" id="title" required>
-          <label for="title">Guide Title</label>
-        </div>
-        <div class="input-field">
-          <textarea id="content" class="materialize-textarea" required></textarea>
-          <label for="content">Guide Content</label>
-        </div>
-        <button class="btn yellow darken-2 z-depth-0">Create</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- GUIDE LIST -->
-  <div class="container" style="margin-top: 40px;">
-    <ul class="collapsible z-depth-0 guides" style="border: none;">
-      <li>
-        <div class="collapsible-header grey lighten-4">Guide title</div>
-        <div class="collapsible-body white">Lorem ipsum dolor sit amet.</div>
-      </li>
-      <li>
-        <div class="collapsible-header grey lighten-4">Guide title</div>
-        <div class="collapsible-body white"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-      <li>
-        <div class="collapsible-header grey lighten-4">Guide title</div>
-        <div class="collapsible-body white"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-      <li>
-        <div class="collapsible-header grey lighten-4">Guide title</div>
-        <div class="collapsible-body white"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-    </ul>
-  </div>
-  
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-       https://firebase.google.com/docs/web/setup#config-web-app -->
-
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyAhjQ3jcnWyE6Hcq__AbkJvdjKKaJzmWhE",
-      authDomain: "teste-2-de-projetos.firebaseapp.com",
-      databaseURL: "https://teste-2-de-projetos.firebaseio.com",
-      projectId: "teste-2-de-projetos",
-      storageBucket: "teste-2-de-projetos.appspot.com"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    // var bigOne = document.getElementById('bigOne');
-    // var dbRef = firebase.database().ref().child('text');
-    // dbRef.on('value', snap => bigOne.innerText=snap.val());
-
-  </script>
-
-  <!-- Minified script for opening and closing of html components -->
-  <script src="js/materialize.min.js"></script>
- 
-  <!-- Compiled and minified JavaScript -->
-  <script src="js/jquery.min.js"></script>
-  <script>
-    var elem = document.querySelector('.sidenav');
-    var instance = new M.Sidenav(elem);
-  </script>
-  <script src="js/auth.js"></script>
-  <script src="js/index.js"></script>
-
-  <script>
-
-    //criar quadrado
-    var canvas = new fabric.Canvas('canvaassss');
-    var rect = new fabric.Rect({
-      left: 100,
-      top: 150,
-      fill: 'red',
-      width: 200,
-      height: 200
-    });
-    canvas.add(rect);
-
-
-
-    //criar imagens indefinidamente
-    var imgCount = 0 ;
-
-    $("#insertImage").click(function() {
-      imgCount++;
-      imgfishID = "imgfish"+imgCount;
-      fabric.Image.fromURL('img/logo.png',function (imgfishID) {
-        canvas.add(imgfishID);
-      });
-      // console.log("added"+imgCount+"images to the canvas!")
-    });
-
-    //salvar canvas inteiro como imagem png
-    var saveCount = 0;
-    var uploader = document.getElementById('uploader');
-    $("#saveImage").click(function () {
-      //ammount of times saved
-      saveCount ++;
-      //turn canvas into blob image
-      $("#canvaassss").get(0).toBlob(function(blob) {
-        //saveAs(blob, "img/canvas/nome.png"); //salvar imagem em pasta local
-        //create a storage Reference 
-        var storageRef = firebase.storage().ref('editor_output/img'+saveCount+'.png');
-        
-        //send arquive(blob)
-        var task = storageRef.put(blob);
-        //update progress bar
-        task.on('state_changed',
-          function progress(snapshot) {
-            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-            uploader.value = percentage;
-          },
-          function error(err) {
-            
-          },
-          function complete() {
-            
-          }
+    // Play audio
+    //
+    function playAudio(url) {
+        // Play the audio file at url
+        var my_media = new Media(url,
+            // success callback
+            function() {
+                document.getElementById('alert').innerHTML = "playAudio():Audio Success";
+            },
+            // error callback
+            function(err) {
+                document.getElementById('alert').innerHTML = "playAudio():Audio Error: "+err;
+            }
         );
-      });
-    });
 
-  </script>
+        // Play audio
+        my_media.play();
 
-</body>
+        // Pause after 10 seconds
+        setTimeout(function() {
+            my_media.stop();
+        }, 10000);
+    }
+
+    </script>
+  </head>
+  <body>
+    <p id="media">Gravar ver1 audio...</p>
+    <p id="alert"></p>
+    <p id="alert2"></p>
+    <p id="msgDisplay"></p>
+    <p id="audio_position"></p>
+    <button id="botaoGravar">Gravar</button>
+  </body>
 </html>
