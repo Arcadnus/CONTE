@@ -11,21 +11,11 @@
 </head>
 <body class="gray">
   <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-firestore.js"></script>
   <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#config-web-app -->
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyAhjQ3jcnWyE6Hcq__AbkJvdjKKaJzmWhE",
-      authDomain: "teste-2-de-projetos.firebaseapp.com",
-      databaseURL: "https://teste-2-de-projetos.firebaseio.com",
-      projectId: "teste-2-de-projetos",
-      storageBucket: "teste-2-de-projetos.appspot.com"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
+
  
   <!-- Compiled and minified JavaScript -->
   <script src="js/jquery.min.js"></script>
@@ -36,7 +26,8 @@
     <div class="logoContainer">
         <img src="img/logo.png">
     </div>
-    <form action="index3.html">
+    <form>
+        <input type="text" id="nome" placeholder="Seu Nome">
         <input type="email" id="email" placeholder="Email">
         <input type="password" id="pass" placeholder="Senha">
         <input type="password" id="pass2" placeholder="Confirme a senha">
@@ -45,13 +36,123 @@
             <option value="true">Sou Professor!</option>
             <option value="false">Sou um Aluno!</option>
         </select>
-        <button type="submit" id="registerBtn" class="registerBtn orange whiteTxt">Ir para o Editor!</button>
     </form>
+        <button id="registerBtn" class="registerBtn orange whiteTxt loggedOut">Registrar!</button>
+        <button id="logoutBtn" class=" registerBtn orange whiteTxt loggedIn">Deslogar!</button>
     <button onclick="nextBg();">Próxima imagem de fundo!</button>
     <button onclick="prevBg();">Anterior imagem de fundo!</button>
     <p id="msg">Exibindo imagem numero: 1</p>
+    <p class="loggedIn">Estou Logado!</p>
+    <p class="loggedOut">Estou Deslogado!</p>
 </div>
 <div class="allignBottom registerTag">Ou <a href="index.html">entre</a> na sua conta</div>
+
 <script src="js/trocaFundo.js"></script>
+<!-- funções para logar ou registrar -->
+<!-- <script src="js/login_logout.js"></script> -->
+<script>
+  const auth = firebase.auth();
+
+  //colocar todos os botões do formulário dentro de variaveis constantes
+    const txtNome = document.getElementById('nome');
+    const txtEmail = document.getElementById('email');
+    const txtPass = document.getElementById('pass');
+    const txtPass2 = document.getElementById('pass2');
+    const txtProf = document.getElementById('professor');
+    const btnSignUp = document.getElementById('registerBtn');
+    const btnLogout = document.getElementById('logoutBtn');
+    const msgField = document.getElementById('msg');
+
+  //function to signup
+    btnSignUp.addEventListener('click', e=> {
+      const email =  txtEmail.value;
+      const pass =  txtPass.value;
+      const pass2 =  txtPass2.value;
+      console.log(txtProf.value);
+
+      if (pass == pass2) {
+        const promise = auth.createUserWithEmailAndPassword(email, pass);
+        promise
+          .then(user => console.log(user))
+          .catch(e=> console.log(e.message));
+
+      }else{
+        console.log('passwords dont match!')
+        msgField.innerHTML="Senhas não são iguais!";
+      };
+    });
+
+  //checar se o usuario tá logado ou não
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      if (firebaseUser) {
+        console.log(firebaseUser);
+        // do something when he log in, like hide any elements that's supposed to be seen ONLY when logged out
+        console.log(firebaseUser.email);
+        console.log(firebaseUser.uid);
+        // mensagem para visualizar
+
+
+        msgField.innerHTML = "usuario conectado: " + firebaseUser.email;
+        // btnSignUp.classList.add('hide');
+        // btnLogout.classList.remove('hide');
+
+            console.log("Registrando no RealTimeDb");
+            //TODO: mudar o envio de dados de Firebase para RealTime
+            if (txtProf.value=="true") {
+              //salva em professores
+              //salvar dados no RTDatabase
+                var ref = database.ref('professores');
+                var data = {
+                  nome: txtNome.value,
+                  email: txtEmail.value,
+                  userId: firebaseUser.uid
+                }
+                ref.push(data);
+            }else if(txtProf.value=="false"){
+              //salva em alunos
+              //salvar dados no firestore
+                var ref = database.ref('alunos');
+                var data = {
+                  nome: txtNome.value,
+                  email: txtEmail.value,
+                  userId: firebaseUser.uid
+                }
+                ref.push(data);
+            }else{
+              console.log("falha no true false!");
+            }
+        //do logged in stuff
+        console.log("doing logged in stuff");
+        var divs = document.querySelectorAll('.loggedIn'), i;
+        for (i = 0; i < divs.length; i++) {
+          divs[i].style.display = "block";
+        }
+        var divs2 = document.querySelectorAll('.loggedOut'), i;
+        for (i = 0; i < divs2.length; i++) {
+          divs2[i].style.display = "none";
+        }
+      }else{
+        console.log('not logged in');
+        // do something when he's NOT logged in, like show user info or elements for people that are logged in
+        msgField.innerHTML = "deslogado!";
+        //do logged out stuff
+        console.log("doing logged out stuff");
+        var divs = document.querySelectorAll('.loggedIn'), i;
+        for (i = 0; i < divs.length; i++) {
+          divs[i].style.display = "none";
+        }
+        var divs2 = document.querySelectorAll('.loggedOut'), i;
+        for (i = 0; i < divs2.length; i++) {
+          divs2[i].style.display = "block";
+        }
+      };
+    });
+
+  //function to logout
+    btnLogout.addEventListener('click', e=> {
+      firebase.auth().signOut();
+    });
+
+</script>
 </body>
 </html>

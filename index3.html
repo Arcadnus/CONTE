@@ -17,8 +17,8 @@
 </head>
 <body class="lighten-3">
 
-  <button class="clearAll backBtn" onclick="goBack();">
-    <img src="img/icones/icones-15.png" onclick="goBack();">
+  <button class="clearAll backBtn" onclick="history.back();">
+    <img src="img/icones/icones-15.png" onclick="history.back();">
   </button>
 
   <div class="topEditor">
@@ -35,140 +35,145 @@
   <!-- botôes do editor -->
 	<li id="nav-mobile carousel" class="firstLi right">
 		<ul class="firstUl carousel-item gray myBtn" id="1" onclick="opentab(this.id)">
-			<li class="secondLi" id="tab1">
-        <!-- sticker 1 -->
-        <ul class="secondUl" id="1" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_1.png">
-        </ul>
-        <!-- sticker 2 -->
-        <ul class="secondUl" id="2" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_2.png">
-        </ul>
-        <!-- sticker 3 -->
-        <ul class="secondUl" id="3" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_3.png">
-        </ul>
-        <!-- sticker 4 -->
-        <ul class="secondUl" id="4" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_4.png">
-        </ul>
-        <!-- sticker 5 -->
-        <ul class="secondUl" id="5" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_5.png">
-        </ul>
-        <!-- sticker 6 -->
-        <ul class="secondUl" id="6" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_6.png">
-        </ul>
-        <!-- sticker 7 -->
-        <ul class="secondUl" id="7" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_7.png">
-        </ul>
-        <!-- sticker 8 -->
-        <ul class="secondUl" id="8" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_8.png">
-        </ul>
-        <!-- sticker 9 -->
-        <ul class="secondUl" id="9" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_9.png">
-        </ul>
-        <!-- sticker 10 -->
-        <ul class="secondUl" id="10" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_10.png">
-        </ul>
-        <!-- sticker 11 -->
-        <ul class="secondUl" id="11" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_11.png">
-        </ul>
-        <!-- sticker 12 -->
-        <ul class="secondUl" id="11" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_12.png">
-        </ul>
-        <!-- sticker 13 -->
-        <ul class="secondUl" id="11" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_13.png">
-        </ul>
-        <!-- sticker 14 -->
-        <ul class="secondUl" id="11" onclick="putImage(this.id)">
-          <img src="img/stickers/sticker_14.png">
-        </ul>
-        <!-- and so on... -->
-      </li>
         <img id="imgBtn1"src="img/icones/icones-10.png">
         <!-- <img id="imgBtn1" src="img/logo.png"> -->
 		</ul>
     <ul class="firstUl carousel-item gray myBtn" id="2" onclick="opentab(this.id)">
-      <li class="secondLi" id="tab2">
-        <ul class="secondUl red" id="bgRed">
-        </ul>
-        <ul class="secondUl blue" id="bgBlue">
-        </ul>
-        <ul class="secondUl green" id="bgGreen">
-        </ul>
-        <ul class="secondUl yellow" id="bgYellow">
-        </ul>
-        <ul class="secondUl colors">
-        </ul>
-      </li>
         <img id="imgBtn2" src="img/icones/icones-11.png">
     </ul>
     <ul class="firstUl carousel-item gray myBtn" id="3" onclick="opentab(this.id)">
-      <li class="secondLi" id="tab3">
-        <ul class="secondUl bgDisplayers" id="1" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_1.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="2" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_2.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="3" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_3.jpg">
-        </ul>
-        <!-- <ul class="secondUl bgDisplayers" id="4" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_4.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="5" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_5.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="6" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_6.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="7" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_7.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="8" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_8.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="9" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_9.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="10" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_10.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="11" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_11.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="12" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_12.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="13" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_13.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="14" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_14.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="15" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_15.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="16" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_16.jpg">
-        </ul>
-        <ul class="secondUl bgDisplayers" id="17" onclick="change_bg(this.id);">
-          <img src="img/editor_bg/img_17.jpg">
-        </ul> -->
-      </li>
         <img id="imgBtn3" src="img/icones/icones-17.png">
     </ul>
 	</li>
+
+  <!-- MENU 1 - STICKERS -->
+  <li class="secondLi" id="tab1" onclick="closeTabs(this.id);">
+    <!-- sticker 1 -->
+    <ul class="secondUl" id="1" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_1.png">
+    </ul>
+    <!-- sticker 2 -->
+    <ul class="secondUl" id="2" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_2.png">
+    </ul>
+    <!-- sticker 3 -->
+    <ul class="secondUl" id="3" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_3.png">
+    </ul>
+    <!-- sticker 4 -->
+    <ul class="secondUl" id="4" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_4.png">
+    </ul>
+    <!-- sticker 5 -->
+    <ul class="secondUl" id="5" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_5.png">
+    </ul>
+    <!-- sticker 6 -->
+    <ul class="secondUl" id="6" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_6.png">
+    </ul>
+    <!-- sticker 7 -->
+    <ul class="secondUl" id="7" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_7.png">
+    </ul>
+    <!-- sticker 8 -->
+    <ul class="secondUl" id="8" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_8.png">
+    </ul>
+    <!-- sticker 9 -->
+    <ul class="secondUl" id="9" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_9.png">
+    </ul>
+    <!-- sticker 10 -->
+    <ul class="secondUl" id="10" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_10.png">
+    </ul>
+    <!-- sticker 11 -->
+    <ul class="secondUl" id="11" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_11.png">
+    </ul>
+    <!-- sticker 12 -->
+    <ul class="secondUl" id="11" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_12.png">
+    </ul>
+    <!-- sticker 13 -->
+    <ul class="secondUl" id="11" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_13.png">
+    </ul>
+    <!-- sticker 14 -->
+    <ul class="secondUl" id="11" onclick="putImage(this.id)">
+      <img src="img/stickers/sticker_14.png">
+    </ul>
+    <!-- and so on... -->
+  </li>
+
+  <!-- MENU 2 - ACESSORIOS -->
+  <li class="secondLi" id="tab2" onclick="closeTabs(this.id);">
+    <ul class="secondUl red" id="bgRed">
+    </ul>
+    <ul class="secondUl blue" id="bgBlue">
+    </ul>
+    <ul class="secondUl green" id="bgGreen">
+    </ul>
+    <ul class="secondUl yellow" id="bgYellow">
+    </ul>
+    <ul class="secondUl colors">
+    </ul>
+  </li>
+  <!-- MENU 3 - FUNDOS -->
+  <li class="secondLi" id="tab3" onclick="closeTabs(this.id);">
+    <ul class="secondUl bgDisplayers" id="1" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/1.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="2" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/2.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="3" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/3.jpg">
+    </ul>
+    <!-- <ul class="secondUl bgDisplayers" id="4" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/4.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="5" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/5.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="6" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/6.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="7" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/7.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="8" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/8.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="9" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/9.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="10" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/10.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="11" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/11.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="12" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/12.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="13" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/13.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="14" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/14.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="15" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/15.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="16" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/16.jpg">
+    </ul>
+    <ul class="secondUl bgDisplayers" id="17" onclick="change_bg(this.id);">
+      <img src="img/editor_bg/blackAndWhite/17.jpg">
+    </ul> -->
+  </li>
 
   <!-- testes com o Fabric.js -->
   <canvas id="canvaassss"></canvas>
@@ -204,7 +209,12 @@
   <script src="js/auth.js"></script>
   <script src="js/index.js"></script>
 
+  <!-- TRAVAR A TELA NA HORIZONTAL -->
+  <script src="js/telaHorizontal.js"></script>
+
   <script>
+
+
     //REDIMENSIONAR O CANVAS PARA ENCAIXAR NA TELA
       (function() {
         var
@@ -304,6 +314,12 @@
         imgCount++;
         stickerID = "canvasSticker"+imgCount;
         fabric.Image.fromURL('img/stickers/sticker_'+ids+'.png',function (imgfishID) {
+          imgfishID.set({
+            // borderColor: 'red',
+            // cornerColor: 'green',
+            cornerSize: 15,
+            transparentCorners: false
+          });
           canvas.add(imgfishID);
         });
         console.log("added "+imgCount+" images to the canvas!");
@@ -373,7 +389,7 @@
     //MUDAR IMAGEM DE FUNDO
       
 
-    /*canvas.setBackgroundImage('img/editor_bg/img_1.jpg', canvas.renderAll.bind(canvas), {
+    /*canvas.setBackgroundImage('img/editor_bg/normal/1.jpg', canvas.renderAll.bind(canvas), {
         //original:
         // scaleX: canvas.width / img.width,
         // scaleY: canvas.height / img.height
@@ -384,31 +400,52 @@
 
       function change_bg(imageNumber) {
 
+
+        /*
+        //CORTAR EM BAIXO
         if (imageNumber==1) {         
-          canvas.setBackgroundImage("img/editor_bg/img_"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+          canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
           scaleX: canvas.width / 4000,
-          scaleY: canvas.height / 3000
+          scaleY: canvas.width / 4000,
+          left: canvas.width/2,
+          top: 0,
+          originX: "center",
+          originY: "top"
           });
- 
+        //CORTAR NO MEIO
         }else if(imageNumber==2){
-          canvas.setBackgroundImage("img/editor_bg/img_"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+          canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
           scaleX: canvas.width / 4000,
-          scaleY: canvas.width / 4000
+          scaleY: canvas.width / 4000,
+          left: canvas.width/2,
+          top: canvas.height/2,
+          originX: "center",
+          originY: "center"
           });
- 
+        /CORTAR EM CIMA
         }else if(imageNumber==3){
-          canvas.setBackgroundImage("img/editor_bg/img_"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
-          scaleX: canvas.height / 3000,
-          scaleY: canvas.height / 3000
+          canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+          scaleX: canvas.width / 4000,
+          scaleY: canvas.width / 4000,
+          left: canvas.width/2,
+          top: canvas.height,
+          originX: "center",
+          originY: "bottom"
           });
  
         }
+        */
 
-
-
+        canvas.setBackgroundImage("img/editor_bg/blackAndWhite/"+imageNumber+".jpg", canvas.renderAll.bind(canvas),{
+          scaleX: canvas.width / 4000,
+          scaleY: canvas.width / 4000,
+          left: canvas.width/2,
+          top: canvas.height,
+          originX: "center",
+          originY: "bottom"
+          });
   
       };
-
 
     //ABRIR AS ABAS DO MENU
       function opentab(num) {
@@ -417,9 +454,19 @@
         $("#"+num).toggleClass("btnOpened");
       };
 
-      function goBack() {
-        history.back();
-      }
+      function closeTabs(ids) {
+        console.log("closing " + ids);
+        if (ids==="tab1") {
+          $("#tab1").toggleClass("show1");
+          $("#1").toggleClass("btnOpened");
+        }else if(ids==="tab2"){
+          $("#tab2").toggleClass("show2");
+          $("#2").toggleClass("btnOpened");
+        }else if(ids==="tab3"){
+          $("#tab3").toggleClass("show3");
+          $("#3").toggleClass("btnOpened");
+        };
+      };
   </script>
 
 </body>

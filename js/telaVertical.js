@@ -1,0 +1,1 @@
+screen.orientation.lock('portrait');

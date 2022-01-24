@@ -14,38 +14,75 @@
   <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
   <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#config-web-app -->
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyAhjQ3jcnWyE6Hcq__AbkJvdjKKaJzmWhE",
-      authDomain: "teste-2-de-projetos.firebaseapp.com",
-      databaseURL: "https://teste-2-de-projetos.firebaseio.com",
-      projectId: "teste-2-de-projetos",
-      storageBucket: "teste-2-de-projetos.appspot.com"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
+
  
   <!-- Compiled and minified JavaScript -->
   <script src="js/jquery.min.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/index.js"></script>
+  <!-- TRAVAR A TELA NA Vertical -->
+  <script src="js/telaVertical.js"></script>
 
 <div class="container">
     <div class="logoContainer">
         <img src="img/logo.png">
     </div>
-    <form action="index3.html">
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="pass" placeholder="Senha">
-        <button type="submit" id="registerBtn" class="registerBtn orange whiteTxt">Ir para o Editor!</button>
+    <form>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="pass" placeholder="Senha" required>
     </form>
-    <button onclick="nextBg();">Próxima imagem de fundo!</button>
-    <button onclick="prevBg();">Anterior imagem de fundo!</button>
-    <p id="msg">Exibindo imagem numero: 1</p>
+    <button id="loginBtn" class="registerBtn orange whiteTxt">Login</button>
+
+    <button id="logoutBtn" class="registerBtn orange whiteTxt hide">Logout</button>
+    <!-- <button onclick="nextBg();">Próxima imagem de fundo!</button> -->
+    <!-- <button onclick="prevBg();">Anterior imagem de fundo!</button> -->
+    <!-- <p id="msg">Exibindo imagem numero: 1</p> -->
 </div>
 <div class="allignBottom registerTag">Ou <a href="register.html">Registra</a> Com e-mail</div>
+
 <script src="js/trocaFundo.js"></script>
+<!-- funções para logar ou registrar -->
+<!-- <script src="js/login_logout.js"></script> -->
+<script>
+  const auth = firebase.auth();
+  
+  //colocar todos os botões do formulário dentro de variaveis constantes
+  const txtEmail = document.getElementById('email');
+  const txtPass = document.getElementById('pass');
+  const btnLogin = document.getElementById('loginBtn');
+  const btnLogout = document.getElementById('logoutBtn');
+  // const msgField = document.getElementById('msg');
+
+  //function to login
+    btnLogin.addEventListener('click', e=> {
+      var email =  txtEmail.value;
+      var pass =  txtPass.value;
+
+      const promise = auth.signInWithEmailAndPassword(email, pass);
+      // promise.catch(e=> msgField.innerHTML = (e.message));
+    });
+
+  //function to logout
+    btnLogout.addEventListener('click', e=> {
+      firebase.auth().signOut();
+    });
+
+  //checar se o usuario tá logado ou não
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      if (firebaseUser) {
+        console.log(firebaseUser);
+        // do something when he log in, like show any elements that's supposed to be seen ONLY when logged in
+        console.log(firebaseUser.email);
+        console.log(firebaseUser.uid);
+        btnLogin.classList.add('hide');
+        btnLogout.classList.remove('hide');
+        window.location.href = "storyList.html";
+      }else{
+        console.log('not logged in');
+        // do something when he's NOT logged in, like hide user info or elements for people that are logged in
+      };
+    });
+
+</script>
 </body>
 </html>

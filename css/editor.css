@@ -36,6 +36,7 @@ img{
 
 .btnOpened{
   background-color: dimgray !important;
+  z-index: 1000 !important;
 }
 
 .backBtn{
@@ -83,19 +84,19 @@ img{
 /*abas que abrem ao clicar*/
 /*stickers, planos de fundo, e etc*/
 .secondLi{
-  width: 32vw;
-  margin-top: -22vw;
-  /*
-    Essa medida é o valor do margin-top menos
-    o valor do margin-bottom da classe .show
-    fórmula:
-    (this.margin-top) = (this.height) - (.show.margin-bottom)
-  */
+  width: 0;
+  margin-top: 0;
   height: 21vw; 
   overflow: scroll;
-  transform: scale(0);
+  transform: scale(0.1);
   transition-duration: 0.5s;
   animation-duration: 0.5s;
+  position: absolute;
+  z-index: 999;
+}
+
+.over{
+  z-index: 1000;
 }
 
 .secondUl{
@@ -126,54 +127,42 @@ ul li ul img{
 .show1,
 .show2,
 .show3{
-  margin-top: -22vw !important; /*VALOR DEPOIS DE ABRIR*/
+  /*VALOR DEPOIS DE ABRIR*/
+    margin-top: 0vw !important;
+    margin-left: 0vw !important;
   display: block !important;
-  margin-bottom: 1vw;
   transform: scale(1);
   transition-duration: 0.5s;
   animation-duration: 0.5s;
+  height: 100vh;
+  width: 100vw;
 }
 
-.show1{
-  /*VALOR DEPOIS DE ABRIR*/
-    margin-left: -1vw !important;
-}
-
-.show2{
-  /*VALOR DEPOIS DE ABRIR*/
-  margin-left: -13vw !important;
-}
-
-.show3{
-  /*VALOR DEPOIS DE ABRIR*/
-    margin-left: -88vw !important;
-    margin-top: -44vw !important;
-    height: 100vh;
-    width: 100vw;
+.show1 img,
+.show2 img,
+.show3 img{
+  width: 30%
 }
 
 #tab1{
   /*VALOR ANTES DE ABRIR*/
-    margin-top: -16vw;
-    margin-left: 4vw;
+    margin-top: 86vh;
+    margin-left: 68vw;
   background-color: green;
-  transform-origin: bottom left;
 }
 
 #tab2{
   /*VALOR ANTES DE ABRIR*/
-    margin-top: -16vw;
-    margin-left: -11vw;
+    margin-top: 86vh;
+    margin-left: 80vw;
   background-color: blue;
-  transform-origin: bottom center;
 }
 
 #tab3{
   /*VALOR ANTES DE ABRIR*/
-    margin-top: -16vw;
-    margin-left: -25vw;
+    margin-top: 86vh;
+    margin-left: 91vw;
   background-color: red;
-  transform-origin: bottom right;
 }
 
 #imgBtn1{

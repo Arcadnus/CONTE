@@ -1,90 +1,114 @@
 /*geral*/
 
-body{
-   background-image: url("../img/bg/cropped/bg_1.jpg");
-  padding: 0px;
-  margin: 0px;
-}
-  /*Colors*/
-    
-    .white{
-      background-color: white;
+  body{
+     background-image: url("../img/bg/cropped/bg_1.jpg");
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .dinosaur{
+    font-family: dinosaur, sans-serif;
+  }
+    /*Colors*/
+      
+      .white{
+        background-color: white;
+      }
+
+      .whiteTxt{
+        color: white;
+      }
+
+      .gray{
+        background-color: lightgray;
+      }
+
+
+      .red{
+        background-color: #e55a46;
+      }
+
+      .redTxt,
+      .registerTag a{
+        color: #e55a46;
+      }
+
+      .orange{
+        background-color: #f3aa4d;
+      }
+
+      .orangeTxt{
+        color: #f3aa4d;
+      }
+
+      .yellow{
+        background-color: #ebcc41;
+      }
+
+      .yellowTxt{
+        color: #ebcc41;
+      }
+
+      .green{
+        background-color: #76b66a;
+      }
+
+      .greenTxt{
+        color: #76b66a;
+      }
+
+      .blue{
+        background-color: #56bbd9;
+      }
+
+      .blueTxt{
+        color: #56bbd9;
+      }
+  }
+
+
+
+  .container{
+    padding: 5%;
+    max-height: 80vh;
+    overflow: scroll; 
+  }
+
+  .allignBottom{
+    bottom: 0px;
+    position: absolute;
+  }
+
+  img{
+    width: 100%
+  }
+    .logoContainer{
+      width: 80%;
+      margin: 5vw auto;
     }
 
-    .whiteTxt{
-      color: white;
-    }
+  .hide{
+    display: none !important;
+  }
 
-    .gray{
-      background-color: lightgray;
-    }
-
-
-    .red{
-      background-color: #e55a46;
-    }
-
-    .redTxt,
-    .registerTag a{
-      color: #e55a46;
-    }
-
-    .orange{
-      background-color: #f3aa4d;
-    }
-
-    .orangeTxt{
-      color: #f3aa4d;
-    }
-
-    .yellow{
-      background-color: #ebcc41;
-    }
-
-    .yellowTxt{
-      color: #ebcc41;
-    }
-
-    .green{
-      background-color: #76b66a;
-    }
-
-    .greenTxt{
-      color: #76b66a;
-    }
-
-    .blue{
-      background-color: #56bbd9;
-    }
-
-    .blueTxt{
-      color: #56bbd9;
-    }
-
-
-
-.container{
-  padding: 5%;
-  /*min-height: 95vh*/
-}
-
-.allignBottom{
-  bottom: 0px;
-  position: absolute;
-}
-
-img{
-  width: 100%
-}
-  .logoContainer{
-    width: 80%;
-    margin: auto;
+  .backBtn{
+    width: 20vw;
+    margin: 4vw;
+    position: absolute;
+    z-index: 999;
+    background-color: transparent;
+    left: 0;
+    border-style: none;
   }
 
 /*index.html + register.html*/
 
   .registerBtn{
     border:none !important;
+  }
+
+  form select{
+    background-color: white;
   }
 
   form input,
@@ -121,42 +145,175 @@ img{
 
 /*storyList.html*/
 
-.SLBtnWrapper{
-  width: 90%;
-  padding: 5%;
-  height: 88px; 
-}
-
-.SLBtn{
-  width: calc(90% - (4px*2));
-  margin-left: 13%;
-  text-align: center;
-  padding: 16px 16px 16px 44px;
-  border-style: solid;
-  border-width: 4px;
-  box-sizing: border-box;
-}
-
-.SLCircle{
-    position: relative;
-    width: 30%;
-    margin-top: -8%;
-    padding-top: 30%;
-    box-sizing: border-box;
-    border-radius: 999px;
-    border-style: solid;
-    border-width: 4px;
-}
-  .SLCircleChild{
+  .perfilTab{
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: -webkit-center;
+    top: -50vh;
+    z-index: 2;
+    transition-duration: 0.5s;
+  }
+    .perfilDetails{
+      .
+    }
+
+      .perfilImgContainer{
+        width: 30vw;
+        height: 30vw;
+        margin-top: 5%;
+        border-radius: 500px;
+        background-color: black;
+        overflow: hidden;
+      }
+
+      .perfilImgContainer img{
+        width: 80%;
+        margin-top: 10%;
+        border-radius: 500px;
+      }
+
+    .hiMsg{
+      color: white;
+      font-size: x-large;
+      text-align: center;
+    }
+
+    .btnPerfil{
+      width: 90%;
+      margin: 5%;
+      border-style: solid;
+      background-color: transparent;
+      color: white;
+      font-size: large;
+      border-radius: 500px;
+      padding: 10px;
+      border-width: thick;
+    }
+  .perfilOut{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    display: none;
   }
 
-  .SLCircleChild img{
-    width: 60%;
-    margin-left: 30%;
-    margin-top: 12%;
+  .SLBtnWrapper{
+    width: 90%;
+    padding: 5%;
+    height: 88px; 
+    position: fixed;
+  }
+
+  .SLBtn{
+    width: calc(90% - (4px*2));
+    margin-left: 13%;
+    text-align: center;
+    padding: 16px 16px 16px 44px;
+    border-style: solid;
+    border-width: 4px;
+    box-sizing: border-box;
+    border-radius: 50px;
+  }
+
+  .SLCircle{
+      position: relative;
+      width: 30%;
+      margin-top: -8%;
+      padding-top: 30%;
+      box-sizing: border-box;
+      border-radius: 999px;
+      border-style: solid;
+      border-width: 4px;
+  }
+    .SLCircleChild{
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .SLCircleChild img{
+      width: 60%;
+      margin-left: 30%;
+      margin-top: 12%;
+    }
+
+  .storyItem{
+    width: 88vw;
+    height: 26vw;
+    margin: 1vw auto 3vw auto;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    /*
+    shadow designed with help from:
+
+    The ultimate CSS tools for web designers - <https://www.cssmatic.com/box-shadow>
+    
+    */
+    -webkit-box-shadow: 6px 7px 10px -1px rgba(0,0,0,0.12);
+    -moz-box-shadow: 6px 7px 10px -1px rgba(0,0,0,0.12);
+    box-shadow: 6px 7px 10px -1px rgba(0,0,0,0.12);
+  }
+
+    .storyDivEsq{
+      float: left;
+      width: 30%;
+      height: 100%;
+      background-image: url("../img/editor_bg/blackAndWhite/1.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .storyDivDir{
+      float: right;
+      padding: 10px;
+      box-sizing: border-box;
+      width: 70%;
+      height: 100%;
+      background-color: red;
+    }
+
+    .storyTitle{
+      width: fit-content;
+      margin: 0;
+      font-family: dinosaur, sans-serif;
+      font-weight: bold;
+      font-size: larger;
+      min-inline-size: max-content;
+    }
+
+    .storyClass{
+      font-family: dinosaur, sans-serif;
+      font-weight: thin;
+      width: fit-content;
+      margin: 0 0 20px 0;
+    }
+
+    .storyEditBtn{
+      border-radius: 5px;
+      -webkit-box-shadow: 6px 7px 10px -1px rgba(0,0,0,0.12);
+      -moz-box-shadow: 6px 7px 10px -1px rgba(0,0,0,0.12);
+      box-shadow: 6px 7px 10px -1px rgba(0,0,0,0.12);
+    }
+
+    .storyShareBtn{
+      width: 60%;
+    }
+
+    .storyShareBtn,
+    .storyEditBtn{
+      font-size: small;
+      padding: 5px;
+      float: left;
+      color: white;
+    }
+
+  .container{
+    margin: 5%;
+    max-height: 80vh;
+    overflow: scroll; 
   }
