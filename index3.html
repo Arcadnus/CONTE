@@ -15,9 +15,61 @@
   <script src="js/fabric.min.js"></script>
   <script src="js/canvas-toBlob.js"></script>
   <script src="js/FileSaver.min.js"></script>
-  
+  <style type="text/css">
+    .alerta img{
+      float: left;
+      height: 15vw;
+      width: 15vw;
+    }
+    .alerta h5{
+      color: white;
+      width: 80%;
+      font-size: medium;
+      margin: 0vh;
+      padding: 12vh 4vw;
+      float: left;
+      text-align-last: auto;
+    }
+  </style>  
 </head>
 <body class="lighten-3">
+
+  <div class="alerta" style="padding-top: 5vh; background-color: rgba(0,0,0,0.9);" id="tutorial1">
+    <img src="img/icones/svg/new/icones_com_o_circulo_lixeira.svg">
+    <h5>
+      <!-- TEXTO -->
+      EXCLUI O OBJETO SELECIONADO
+    </h5>
+    <img src="img/icones/svg/new/icones_com_o_circulo_nova_cena.svg">
+    <h5>
+      <!-- TEXTO -->
+      SALVA AS MUDANÇAS DESSE CENÁRIO
+    </h5>
+    <img src="img/icones/svg/new/icones_com_o_circulo_editar_cenas.svg">
+    <h5>
+      <!-- TEXTO -->
+      ABRE O EDITOR DE AUDIOS(DESABILITADO)
+    </h5>
+  </div>
+
+  <div class="alerta" style="padding-top: 5vh; background-color: rgba(0,0,0,0.9);" id="tutorial2">
+    <img src="img/icones/svg/new/icones_com_o_circulo_stickers.svg">
+    <h5>
+      <!-- TEXTO -->
+      ABRE A JANELA COM PERSONAGENS
+    </h5>
+    <img src="img/icones/svg/new/icones_com_o_circulo_simbolos.svg">
+    <h5>
+      <!-- TEXTO -->
+      ABRE UMA OUTRA JANELA COM ACESSÓRIOS
+    </h5>
+    <img src="img/icones/svg/new/icones_com_o_circulo_camera.svg">
+    <h5>
+      <!-- TEXTO -->
+      ABRE MAIS UMA JANELA COM IMAGENS DE FUNDO
+    </h5>
+  </div>
+
   <div class="alerta" id="alerta"><p id="msg" class="dinosaur orange">CENA SALVA~</p></div>
   <button class="clearAll backBtn" onclick="window.location.href = 'storyList.html';">
     <img src="img/
@@ -170,89 +222,89 @@ icones/svg/new/icones_com_o_circulo_voltar.svg">
 
   <!-- MENU 2 - ACESSORIOS -->
   <li class="secondLi" id="tab2" onclick="closeTabs(this.id);">
-    <!-- acessory 1 -->
-    <ul class="secondUl" id="1" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_1.png">
+    <!-- accessory 1 -->
+    <ul class="secondUl" id="1" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_1.png">
     </ul>
-    <!-- acessory 2 -->
-    <ul class="secondUl" id="2" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_2.png">
+    <!-- accessory 2 -->
+    <ul class="secondUl" id="2" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_2.png">
     </ul>
-    <!-- acessory 3 -->
-    <ul class="secondUl" id="3" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_3.png">
+    <!-- accessory 3 -->
+    <ul class="secondUl" id="3" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_3.png">
     </ul>
-    <!-- acessory 4 -->
-    <ul class="secondUl" id="4" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_4.png">
+    <!-- accessory 4 -->
+    <ul class="secondUl" id="4" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_4.png">
     </ul>
-    <!-- acessory 5 -->
-    <ul class="secondUl" id="5" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_5.png">
+    <!-- accessory 5 -->
+    <ul class="secondUl" id="5" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_5.png">
     </ul>
-    <!-- acessory 6 -->
-    <ul class="secondUl" id="6" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_6.png">
+    <!-- accessory 6 -->
+    <ul class="secondUl" id="6" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_6.png">
     </ul>
-    <!-- acessory 7 -->
-    <ul class="secondUl" id="7" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_7.png">
+    <!-- accessory 7 -->
+    <ul class="secondUl" id="7" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_7.png">
     </ul>
-    <!-- acessory 8 -->
-    <ul class="secondUl" id="8" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_8.png">
+    <!-- accessory 8 -->
+    <ul class="secondUl" id="8" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_8.png">
     </ul>
-    <!-- acessory 9 -->
-    <ul class="secondUl" id="9" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_9.png">
+    <!-- accessory 9 -->
+    <ul class="secondUl" id="9" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_9.png">
     </ul>
-    <!-- acessory 10 -->
-    <ul class="secondUl" id="10" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_10.png">
+    <!-- accessory 10 -->
+    <ul class="secondUl" id="10" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_10.png">
     </ul>
-    <!-- acessory 11 -->
-    <ul class="secondUl" id="11" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_11.png">
+    <!-- accessory 11 -->
+    <ul class="secondUl" id="11" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_11.png">
     </ul>
-    <!-- acessory 12 -->
-    <ul class="secondUl" id="12" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_12.png">
+    <!-- accessory 12 -->
+    <ul class="secondUl" id="12" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_12.png">
     </ul>
-    <!-- acessory 13 -->
-    <ul class="secondUl" id="13" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_13.png">
+    <!-- accessory 13 -->
+    <ul class="secondUl" id="13" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_13.png">
     </ul>
-    <!-- acessory 14 -->
-    <ul class="secondUl" id="14" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_14.png">
+    <!-- accessory 14 -->
+    <ul class="secondUl" id="14" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_14.png">
     </ul>
-    <!-- acessory 15 -->
-    <ul class="secondUl" id="15" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_15.png">
+    <!-- accessory 15 -->
+    <ul class="secondUl" id="15" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_15.png">
     </ul>
-    <!-- acessory 16 -->
-    <ul class="secondUl" id="16" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_16.png">
+    <!-- accessory 16 -->
+    <ul class="secondUl" id="16" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_16.png">
     </ul>
-    <!-- acessory 17 -->
-    <ul class="secondUl" id="17" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_17.png">
+    <!-- accessory 17 -->
+    <ul class="secondUl" id="17" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_17.png">
     </ul>
-    <!-- acessory 18 -->
-    <ul class="secondUl" id="18" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_18.png">
+    <!-- accessory 18 -->
+    <ul class="secondUl" id="18" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_18.png">
     </ul>
-    <!-- acessory 19 -->
-    <ul class="secondUl" id="19" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_19.png">
+    <!-- accessory 19 -->
+    <ul class="secondUl" id="19" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_19.png">
     </ul>
-    <!-- acessory 20 -->
-    <ul class="secondUl" id="20" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_20.png">
+    <!-- accessory 20 -->
+    <ul class="secondUl" id="20" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_20.png">
     </ul>
-    <!-- acessory 21 -->
-    <ul class="secondUl" id="21" onclick="putAcessory(this.id)">
-      <img src="img/stickers/acessory_21.png">
+    <!-- accessory 21 -->
+    <ul class="secondUl" id="21" onclick="putaccessory(this.id)">
+      <img src="img/stickers/accessory_21.png">
     </ul>
   </li>
   <!-- MENU 3 - FUNDOS -->
@@ -397,12 +449,29 @@ icones/svg/new/icones_com_o_circulo_voltar.svg">
     const msg = document.getElementById('msg');
     var bgAtual;
 
+
     //MOSTRAR MENSAGENS E ALERTAS
-   
+      
+
       function alertaMSG(mensagem){
         $("#msg").innerHTML = "CENA SALVA!";
         $("#alerta").show().delay(1500).hide(500);
       };
+
+    //tutoriais 
+      function tutoriais(){
+        //mostra os tutoriais
+          $("#tutorial1").show();
+
+          $("#tutorial1").click(function(){
+            $("#tutorial1").hide();
+            $("#tutorial2").show();
+          });
+          $("#tutorial2").click(function(){
+            $("#tutorial2").hide();
+          }); 
+      };
+
 
     //REDIMENSIONAR O CANVAS PARA ENCAIXAR NA TELA
 
@@ -531,6 +600,8 @@ icones/svg/new/icones_com_o_circulo_voltar.svg">
               // cornerColor: 'green',
               scaleX: 0.2,
               scaleY: 0.2,
+              top: 50,
+              left: 50,
               cornerSize: 15,
               transparentCorners: false
             });
@@ -544,15 +615,17 @@ icones/svg/new/icones_com_o_circulo_voltar.svg">
         };
       //FUNÇÃO PARA STICKERS DE ACESSÓRIOS
       
-        function putAcessory(ids) {
+        function putaccessory(ids) {
           imgCount++;
           stickerID = "canvasSticker"+imgCount;
-          fabric.Image.fromURL('img/stickers/acessory_'+ids+'.png',function (imgfishID) {
+          fabric.Image.fromURL('img/stickers/accessory_'+ids+'.png',function (imgfishID) {
             imgfishID.set({
               // borderColor: 'red',
               // cornerColor: 'green',
               scaleX: 0.2,
               scaleY: 0.2,
+              top: 50,
+              left: 50,
               cornerSize: 15,
               transparentCorners: false
             });
@@ -749,6 +822,7 @@ icones/svg/new/icones_com_o_circulo_voltar.svg">
 
       function delItem() {
         canvas.remove(canvas.getActiveObject());
+        console.log('deletando itens!');
       }
 
   //checar se o usuario tá logado ou não
@@ -769,14 +843,17 @@ icones/svg/new/icones_com_o_circulo_voltar.svg">
           // console.log(data.val());
           //salva um objeto com a lista de todas as cenas
           var cenas = data.val();
+          var cena = data.child(sceneNumber).val();
           var cenasObjects = data.child(sceneNumber).child('objects').val();
           var cenasBackGround = data.child(sceneNumber).child('backgroundImage').val();
             nCBtn.addEventListener('click', sendData);
+            console.log(cena);
 
           // console.log(cenas);
-          if (cenas == null) {
+          if (cena == null) {
             //criar nova cena
             console.log('não há cenas criadas!');
+            tutoriais();  
           }else{
             //abrir a primeira cena
             for (var i = 0; i < cenasObjects.length ; i++) {

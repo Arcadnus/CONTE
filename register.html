@@ -11,6 +11,15 @@
 
 </head>
 <body class="gray">
+  <div class="alerta" style="padding-top: 5vh; background-color: rgba(0,0,0,0.9);" id="alerta">
+    <p>CLÁUSULA DE RESERVA</p>
+    <h5 style="color: white; width: 80%;font-size: medium; margin: 5vh auto;">
+      <!-- clausula -->
+        CLÁUSULA DE RESERVA (Lei 9.610/98 -LEI DE DIREITOS AUTORAIS): Este site foi publicado e é mantido pelos discentes do 8º semestre, do Curso de Graduação em Design Digital, da Universidade Anhembi  Morumbi,  visando  a  atender às  exigências do  Projeto  Final  em  Design  Digital. Trata-se  de uma  publicação  temporária  para  propósitos  estritamente  acadêmicos  e  sem  fins  lucrativos.  Em atendimento  às  exigências  da  Lei  9.610/98,  do  parágrafo  4°,  do  Artigo  184,  do  Código Penal,  os discentes  responsáveis  por  esta  publicação  colocam-se  à  disposição,  por  intermédio  do  e-mail lsenra.costa@gmail.com,  para  dirimir  quaisquer  dúvidas  referentes  à  eventual  violação  de  direitos  autorais, comprometendo-se  desde  já, remover  dos  servidores  online,  qualquer  texto,  som  ou  imagem pertencente a autor ou titular que se sinta direta ou indiretamente prejudicado.
+
+    </h5>
+    <p class="DINosaur-bold orange" id="ok">ENTENDI!</p>
+  </div>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-firestore.js"></script>
@@ -40,10 +49,10 @@
     </form>
         <button id="registerBtn" class="registerBtn orange whiteTxt DINosaur-bold loggedOut">REGISTRAR!</button>
         <a href="index.html"><button class="registerBtn orange whiteTxt DINosaur-bold loggedOut">LOGIN</button></a>
-        <!-- <button id="logoutBtn" class=" registerBtn orange whiteTxt loggedIn">Deslogar!</button> -->
+        <!-- <button id="logoutBtn" class=" registerBtn orange whiteTxt">Deslogar!</button> -->
     <!-- <button onclick="nextBg();">Próxima imagem de fundo!</button> -->
     <!-- <button onclick="prevBg();">Anterior imagem de fundo!</button> -->
-    <p class="DINosaur-medium" id="msg"></p>
+    <p class="DINosaur-bold whiteTxt red" id="msg" style="text-align: center;"></p>
     <!-- <p class="loggedIn">Estou Logado!</p> -->
     <!-- <p class="loggedOut">Estou Deslogado!</p> -->
 </div>
@@ -62,8 +71,23 @@
     const txtPass2 = document.getElementById('pass2');
     const txtProf = document.getElementById('professor');
     const btnSignUp = document.getElementById('registerBtn');
-    const btnLogout = document.getElementById('logoutBtn');
+    // const btnLogout = document.getElementById('logoutBtn');
     const msgField = document.getElementById('msg');
+
+
+$(document).ready(function(){
+  //mostra o Alerta
+  $("#alerta").show();
+
+  $("#ok").click(function(){
+    $("#alerta").hide();
+  });
+});
+
+  // function to logout
+    /*btnLogout.addEventListener('click', e=> {
+      firebase.auth().signOut();
+    });*/
 
   //function to signup
     btnSignUp.addEventListener('click', e=> {
@@ -72,11 +96,12 @@
       const pass2 =  txtPass2.value;
       console.log(txtProf.value);
 
-      if (pass == pass2) {
+      if (pass == pass2 && txtNome.value != "") {
+        console.log(txtNome.value);
         const promise = auth.createUserWithEmailAndPassword(email, pass);
         promise
           .then(user => console.log(user))
-          .catch(e=> msg.innerHTML =e.message);
+          .catch(e=> msgField.innerHTML =e.message);
           var user = firebase.auth().currentUser;
           //registrar nome do usuario
           user.updateProfile({
@@ -87,9 +112,12 @@
             // An error happened.
           });
 
+      }else if (txtNome.value=="") {
+        console.log('No name typed!');
+        msgField.innerHTML="ESCREVA SEU NOME!";
       }else{
-        console.log('passwords dont match!')
-        msgField.innerHTML="Senhas não são iguais!";
+        console.log('passwords dont match!');
+        msgField.innerHTML="AS SENHAS NÃO SÃO IGUAIS!";
       };
     });
 
@@ -105,7 +133,7 @@
 
         // msgField.innerHTML = "usuario conectado: " + firebaseUser.email;
         // btnSignUp.classList.add('hide');
-        // btnLogout.classList.remove('hide');
+        //
 
             console.log("Registrando no RealTimeDb");
             //TODO: mudar o envio de dados de Firebase para RealTime
@@ -167,7 +195,7 @@
         for (i = 0; i < divs2.length; i++) {
           divs2[i].style.display = "none";
         }
-      
+
         window.location.href = "index.html";
       }else{
         console.log('not logged in');

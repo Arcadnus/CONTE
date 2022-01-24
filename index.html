@@ -38,7 +38,7 @@
       <button class="registerBtn orange whiteTxt DINosaur-bold">REGISTRAR!</button>
     </a>
 
-    <!-- <button id="logoutBtn" class="registerBtn orange whiteTxt DINosaur-bold hide">Logout</button> -->
+    <button id="logoutBtn" class="registerBtn orange whiteTxt DINosaur-bold hide">Logout</button>
     <!-- <button onclick="nextBg();">Próxima imagem de fundo!</button> -->
     <!-- <button onclick="prevBg();">Anterior imagem de fundo!</button> -->
 </div>
@@ -81,10 +81,10 @@
         });
     });
 
-  //function to logout
-    // btnLogout.addEventListener('click', e=> {
-    //   firebase.auth().signOut();
-    // });
+  // function to logout
+    btnLogout.addEventListener('click', e=> {
+      firebase.auth().signOut();
+    });
 
   //checar se o usuario tá logado ou não
     firebase.auth().onAuthStateChanged(firebaseUser => {
