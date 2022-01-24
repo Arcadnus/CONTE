@@ -34,6 +34,9 @@
           <li class="logged-out">
             <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
           </li>
+          <li class="logged-in">
+            <a href="index.html" class="grey-text" id="logout">Voltar Para Página Inicial</a>
+          </li>
       </ul>
     </div>
   </nav>
@@ -52,24 +55,11 @@
         <a href="#email"><span class="white-text email">Almeidinha@gmail.com</span></a>
       </div>
     </li>
-    <li>
-      <a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a>
-    </li>
-    <li>
-      <a href="#!">Second Link</a>
-    </li>
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li>
-      <a class="subheader">Subheader</a>
-    </li>
-    <li>
-      <a class="waves-effect" href="#!">Third Link With Waves</a>
-    </li>
-    <li class="logged-in">
-      <a href="index.html" class="grey-text" id="logout">Voltar Para Página Inicial</a>
-    </li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"></i></a>
 
@@ -158,8 +148,20 @@
     </ul>
   </div>
   
-  <!-- Compiled and minified JavaScript -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/6.6.0/firebase-app.js"></script>
+  <script src="/__/firebase/6.6.0/firebase-auth.js"></script>
+  <script src="/__/firebase/6.6.0/firebase-firestore.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#reserved-urls -->
+
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
+
   <script src="js/materialize.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
   <script src="js/jquery.min.js"></script>
   <script>
     var elem = document.querySelector('.sidenav');

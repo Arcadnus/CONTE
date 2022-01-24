@@ -8,6 +8,11 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <!-- fabric.js -->
+  <script src="js/fabric.min.js"></script>
+  <script src="js/canvas-toBlob.js"></script>
+  <script src="js/FileSaver.min.js"></script>
+
   <title>GameGuidez</title>
 </head>
 <body class="grey lighten-3">
@@ -62,6 +67,19 @@
     </li>
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"></i></a>
+
+  <!-- testes com o banco de dados -->
+  <h1 id="bigOne"></h1>
+
+
+
+
+  <!-- testes com o Fabric.js -->
+  <canvas id="canvaassss" width="800" height="600"></canvas>
+  <progress value="0" max="100" id="uploader"></progress>
+  <button id="insertImage">Inserir Nova Imagem!</button>
+  <button id="saveImage">Salvar minha imagem no banco de dados!</button>
+
 
 
   <!-- SIGN UP MODAL -->
@@ -148,21 +166,107 @@
     </ul>
   </div>
   
-  <!-- Compiled and minified JavaScript -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAhjQ3jcnWyE6Hcq__AbkJvdjKKaJzmWhE",
+      authDomain: "teste-2-de-projetos.firebaseapp.com",
+      databaseURL: "https://teste-2-de-projetos.firebaseio.com",
+      projectId: "teste-2-de-projetos",
+      storageBucket: "teste-2-de-projetos.appspot.com"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var bigOne = document.getElementById('bigOne');
+    var dbRef = firebase.database().ref().child('text');
+    dbRef.on('value', snap => bigOne.innerText=snap.val());
+
+  </script>
+
+  <!-- Minified script for opening and closing of html components -->
   <script src="js/materialize.min.js"></script>
+ 
+  <!-- Compiled and minified JavaScript -->
   <script src="js/jquery.min.js"></script>
   <script>
     var elem = document.querySelector('.sidenav');
     var instance = new M.Sidenav(elem);
-
-     // with jquery
-
-    $(document).ready(function(){
-     $('.sidenav').sidenav();
-    });
+   
 
   </script>
   <script src="js/auth.js"></script>
   <script src="js/index.js"></script>
+
+  <script>
+
+    //criar quadrado
+    var canvas = new fabric.Canvas('canvaassss');
+    var rect = new fabric.Rect({
+      left: 100,
+      top: 150,
+      fill: 'red',
+      width: 200,
+      height: 200
+    });
+    canvas.add(rect);
+
+
+
+    //criar imagens indefinidamente
+    var imgCount = 0 ;
+
+    $("#insertImage").click(function() {
+      imgCount++;
+      imgfishID = "imgfish"+imgCount;
+      fabric.Image.fromURL('img/logo.png',function (imgfishID) {
+        canvas.add(imgfishID);
+      });
+      console.log("added"+imgCount+"images to the canvas!")
+    });
+
+    //salvar canvas inteiro como imagem png
+    var saveCount = 0;
+    var uploader = document.getElementById('uploader');
+    $("#saveImage").click(function () {
+      //ammount of times saved
+      saveCount ++;
+      //turn canvas into blob image
+      $("#canvaassss").get(0).toBlob(function(blob) {
+      //saveAs(blob, "img/canvas/nome.png"); //salvar imagem em pasta local
+      //create a storage Reference 
+      var storageRef = firebase.storage().ref('editor_output/img'+saveCount+'.png');
+      //send arquive(blob)
+      var task = storageRef.put(blob);
+      //update progress bar
+      task.on('state_changed',
+        function progress(snapshot) {
+          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+          uploader.value = percentage;
+        },
+
+        function error(err) {
+          
+        },
+
+        function complete() {
+          
+        }
+
+
+        );
+
+      });
+    });
+
+  </script>
+
+
 </body>
 </html>
